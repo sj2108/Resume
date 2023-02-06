@@ -9,6 +9,7 @@
     margin: auto;
     display: flex;
     border: 5px solid black;
+    padding-bottom: 20px;
 }
 
 .left
@@ -62,7 +63,7 @@
 }
 .icon-text
 {
-    display: inline;
+    /* display: inline; */
     margin-left: 10px;
     margin-right: 10px;
     margin-bottom: 12px;
@@ -348,6 +349,10 @@ li
     color: #0000FF;
   } 
 
+.space-bottom
+{
+    margin-bottom: 10px;
+}
 
   @media only screen and (max-width: 1150px) {
     
@@ -395,12 +400,20 @@ li
     }
     .icon-text 
     {
-        width: 100%;
+       word-break: break-all;
         text-align: center;
     }
-    .icons
+    .align-icon
     {
-        width: 50%;
+        text-align: center;
+    }
+
+    .link-icon
+    {
+        width: 48%;
+        
+        margin-bottom: 10px;
+        
     }
 
     
