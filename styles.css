@@ -21,7 +21,6 @@
 {
     width: 100%;
     height: 20%;
-    /* height: 200px; */
     box-sizing: content-box;
     display: flex;
     justify-content: center; 
@@ -49,7 +48,6 @@
 .links
 {
     margin: 5px 10px;
-    /* overflow: hidden; */
 }
 
 .icons
@@ -82,7 +80,7 @@ h2
 
 }
 
-.inside-skills
+.inside-skills-container
 {
     margin-right: 25px;
     /* border: 1px darkgreen; */
@@ -114,7 +112,7 @@ h3
     color: rgb(31, 176, 128);
     border-bottom: 1px solid rgb(31, 176, 128);
 }
-.work-exp h4
+.content-container h4
 {
     /* color: black; */
     margin-left: 15px;
@@ -128,16 +126,15 @@ h3
     /* //////8margin-bottom: 5px; */
     color: rgb(31, 176, 128);
 }
-.inside-languages h4
+ .inside-languages-container h4
 {
     margin-top: 15px;
     margin-left: 10px;
     margin-bottom: 5px;
     margin-right: 15px;
     color: black;
-    /* text-align: center; */
     padding-top: 5px;
-}
+} 
 .place-circles
 {
     margin-top: 5px;
@@ -248,10 +245,11 @@ li
     color: black;
 }
 
-.work-exp  .project
+.content-container  .project
 {
     color: black;
 }
+
 
 .education h3
 {
@@ -312,21 +310,16 @@ li
     margin-left: 10px;
     margin-bottom: 12px;
     margin-right: 25px;
-    /* border: 1px darkgreen; */
-    /* background-color: rgb(31, 176, 128); */
     border-radius: 5px;
     height: 30px;
     width: 90%;
     border: 1px solid darkgreen;
 }
 
-/* .icons:hover
+.add-margin
 {
-    cursor: pointer;
-    font-size: 3em;
-    color: rgb(86, 86, 86);
+    margin-bottom: 10px;
 }
-*/
 
 .iconic:link {
     color: black;
