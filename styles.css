@@ -42,7 +42,10 @@
     width: 75%;
 }
 
-
+.introduction
+{
+    display: none;
+}
 
 
 .links
@@ -375,10 +378,24 @@ li
         margin-left: 10%;
         margin-right: 10%;
         width: 80%;
+        
     }
+    .intro
+    {
+        display: none;
+    }
+    .introduction
+    {
+        display: block;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        margin-top: 30px;
+        margin-bottom: 30px;
+        background-color: rgb(31, 176, 128);
+    }
+
     .links
     {
-   
         margin-top: 5%; 
         /* margin: 80px 0px 0px 25px; */
         display: flex;
@@ -406,6 +423,19 @@ li
         width: 48%;
         
         margin-bottom: 10px;
+        
+    }
+    
+    .introduction h4
+    {
+        padding: 0px;
+        color: white;
+        font-weight: normal;
+        font-size: 1.2em; 
+        margin-left: 15px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        border: 0px solid rgb(31, 176, 128);
         
     }
 
