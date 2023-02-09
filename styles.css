@@ -2,16 +2,36 @@
 *{
     box-sizing: border-box;
 }
+.full-page
+{
+    display: flex;
+    justify-content: space-between;
+}
+.form
+{
+    width: 48%;
 
+}
+.sub-form
+{
+    display: none;
+}
 .layout
 {
-    width: 70%;
+    width: 48%;
     margin: auto;
+    
     display: flex;
     border: 5px solid black;
     padding-bottom: 20px;
 }
 
+
+textarea {
+   resize: none;
+}
+
+textarea { resize: vertical; }
 .left
 {
     width: 25%;
@@ -85,6 +105,8 @@ h2
 
 .inside-skills-container
 {
+    /* display: none; */
+    /* display: none; */
     margin-right: 25px;
     /* border: 1px darkgreen; */
     background-color: rgb(31, 176, 128);

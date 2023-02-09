@@ -9,9 +9,102 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
     <link href='styles.css' rel='stylesheet'/>
+   
   </head>
   <body>
+<div class="full-page">
+   <div class="form">
+      <form action="">
+        <label for="topic">Choose a topic to add</label>
+        <br>
+        <select name="topic" id="topic">
+            <option value="None">Select</option>
+            <option value="intro">Introduction</option>
+            <option value="work-exp">Work-Experience</option>
+            <option value="skills">Skills</option>
+            <option value="languages">Languages</option>
+        </select>
+        
 
+        <div class="intro-form sub-form">
+            <br>
+            <div>
+            <label for="name" >Name</label>
+            <input type="text" id="name">
+            </div>
+            <br>
+            <div>
+            <label for="role" >Role</label>
+            <input type="text" id="role">
+            </div>
+            <br>
+            <div>
+                <label for="desc" >Description</label>
+                <textarea id="desc" name="description" rows="4" cols="40"></textarea>
+                </div>
+            <br>
+            <input type="button" value="submit" id="submit-intro">
+        </div>
+        <div class="skills-form sub-form">
+            <br>
+            <div>
+            <label for="skill-name" >Skill-Name</label>
+            <input type="text" id="skill-name">
+            </div>
+            <br>
+            <div>
+            <label for="skill-percentage" >Percentage</label>
+            <input type="text" id="skill-percentage">
+            </div>
+            <br>
+            
+            <input type="button" value="submit" id="submit-skills">
+        </div>
+        <div class="languages-form sub-form">
+            <br>
+            <div>
+            <label for="languages-name" >Language Name</label>
+            <input type="text" id="languages-name">
+            </div>
+            <br>
+            <div>
+            <label for="languages-rating" >Rating(out of 5)</label>
+            <input type="text" id="languages-rating">
+            </div>
+            <br>
+            
+            <input type="button" value="submit" id="submit-languages">
+        </div>
+        <div class="work-exp-form sub-form">
+            <br>
+            <div>
+            <label for="role-name" >Role</label>
+            <input type="text" id="role-name">
+            </div>
+            <br>
+            <div>
+            <label for="company-name" >Company Name</label>
+            <input type="text" id="company-name">
+            </div>
+            <br>
+            <div>
+                <label for="location" >Location</label>
+                <input type="text" id="location">
+            </div>
+            <br>
+            <div>
+                <label for="" >Location</label>
+                <input type="text" id="location">
+            </div>
+            <br>
+            <input type="button" value="submit" id="submit-languages">
+        </div>
+        <br>
+
+      </form>
+      <!-- <div></div> -->
+   </div>
+   
    <div class="layout">
     <div class="left">
             <div class="profile-image">
@@ -48,39 +141,41 @@
                 <div class="icon-text"><a href="https://twitter.com/shreyansh_2108" target="_blank" class="iconic">shreyansh_2108</a></div>
                 </div>
             </div>
-            
-            <div class="skills">
+            <div id="add-skills">
                 <h2>SKILLS</h2>
-                <div class="border-element">
-                    <div class="inside-skills-container C">
-                        <h4>C</h4>
+                <!-- <div class="skills">
+                    
+                    <div class="border-element">
+                        <div class="inside-skills-container C">
+                            <h4>C</h4>
+                        </div>
                     </div>
-                </div>
-                <div class="border-element">
-                    <div class="inside-skills-container Cpp">
-                        <h4>C++</h4>
+                    <div class="border-element">
+                        <div class="inside-skills-container Cpp">
+                            <h4>C++</h4>
+                        </div>
                     </div>
-                </div>
-                <div class="border-element">
-                    <div class="inside-skills-container HTML">
-                        <h4>HTML</h4>
+                    <div class="border-element">
+                        <div class="inside-skills-container HTML">
+                            <h4>HTML</h4>
+                        </div>
                     </div>
-                </div>
-                <div class="border-element">
-                    <div class="inside-skills-container CSS">
-                        <h4>CSS</h4>
+                    <div class="border-element">
+                        <div class="inside-skills-container CSS">
+                            <h4>CSS</h4>
+                        </div>
                     </div>
-                </div>
-                <div class="border-element">
-                    <div class="inside-skills-container Javascript">
-                        <h4>Javascript</h4>
+                    <div class="border-element">
+                        <div class="inside-skills-container Javascript">
+                            <h4>Javascript</h4>
+                        </div>
                     </div>
-                </div>
-                
+                    
+                </div> -->
             </div>
             <div class="languages">
                 <h2>LANGUAGES</h2>
-                <div class="inside-languages-container">
+                <!-- <div class="inside-languages-container">
                     <h4>English</h4>
                     <div class="place-circles">
                         <div><i class="fa-solid fa-circle rating"></i></div>
@@ -115,7 +210,7 @@
                     </div>
                     
                     
-                </div>
+                </div> -->
                 
             </div>
     </div>
@@ -221,7 +316,8 @@
 
     </div>
    </div>
-
+   
+</div>
   <!--ul li::before 
 {
     content: "\2022";  /* Add content: \2022 is the CSS Code/unicode for a bullet */
@@ -231,6 +327,7 @@
     width: 1em; /* Also needed for space (tweak if needed) */
     margin-left: -1em; /* Also needed for space (tweak if needed) */
 }-->
+<script src="index.js"></script>
   </body>
 </html>
 
