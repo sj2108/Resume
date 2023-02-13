@@ -23,6 +23,10 @@
             <option value="work-exp">Work-Experience</option>
             <option value="skills">Skills</option>
             <option value="languages">Languages</option>
+            <option value="contact-info">Contact Information</option>
+            <option value="project">Project</option>
+            <option value="education">Education</option>
+
         </select>
         
 
@@ -41,9 +45,41 @@
             <div>
                 <label for="desc" >Description</label>
                 <textarea id="desc" name="description" rows="4" cols="40"></textarea>
-                </div>
+            </div>
             <br>
             <input type="button" value="submit" id="submit-intro">
+        </div>
+        <div class="contact-info-form sub-form">
+            <br>
+            
+            <div>
+            <label for="linkedin" >LinkedIN</label>
+            <input type="text" id="linkedin">
+            </div>
+            <br>
+            <div>
+            <label for="mail" >Email Id</label>
+            <input type="text" id="mail">
+            </div>
+            <br>
+            <div>
+                <label for="phone" >Phone Number</label>
+                <input type="text" id="phone">
+            </div>
+            <br>
+            <div>
+                <label for="place" >Location</label>
+                <input type="text" id="place">
+            </div>
+            <br>
+            <div>
+                <label for="twitter" >Twitter</label>
+                <input type="text" id="twitter">
+            </div>
+            <br>
+
+            
+            <input type="button" value="submit" id="submit-contact-info">
         </div>
         <div class="skills-form sub-form">
             <br>
@@ -75,6 +111,72 @@
             
             <input type="button" value="submit" id="submit-languages">
         </div>
+        <div class="project-form sub-form">
+            
+            <br>
+            <div>
+            <label for="project-name" >Project Title</label>
+            <input type="text" id="project-name">
+            </div>
+            
+            <br>
+            <div>
+                <label for="date-from" >Date form (mm/yyyy)</label>
+                <input type="text" id="date-from-project">
+            </div>
+            <br>
+            <div>
+                <label for="date-to" >Date to (mm/yyyy)</label>
+                <input type="text" id="date-to-project">
+            </div>
+            <br>
+            <div class="complete-project-desc">
+                <label for="project-desc" >Description(Enter pointwise)</label>
+                <textarea class="project-desc" name="description-project" rows="3" cols="40"></textarea>
+            </div>
+            <br>
+            <!-- <button id='add-desc'>+</button> -->
+            <input type="button" value="+" id="add-project-desc">
+            <input type="button" value="submit" id="submit-project">
+        </div>
+        <div class="education-form sub-form">
+            
+            <br>
+            <div>
+            <label for="degree-name" >Degree</label>
+            <input type="text" id="degree-name">
+            </div>
+            
+            <br>
+            <div>
+                <label for="specialization" >Specialization</label>
+                <input type="text" id="specialization">
+            </div>
+            <br>
+            <div>
+                <label for="college-name" >Institute Name</label>
+                <input type="text" id="college-name">
+            </div>
+            <br>
+            <div>
+                <label for="date-from-edu" >Date from (mm/yyyy)</label>
+                <input type="text" id="date-from-edu">
+            </div>
+            <br>
+            <div>
+                <label for="date-to-edu" >Date to (mm/yyyy)</label>
+                <input type="text" id="date-to-edu">
+            </div>
+            <br>
+            <div>
+                <label for="cgpa" >CGPA</label>
+                <input type="text" id="cgpa">
+            </div>
+            <br>
+            
+            
+            <input type="button" value="submit" id="submit-education">
+        </div>
         <div class="work-exp-form sub-form">
             <br>
             <div>
@@ -88,16 +190,28 @@
             </div>
             <br>
             <div>
-                <label for="location" >Location</label>
-                <input type="text" id="location">
+                <label for="work-location" >Location</label>
+                <input type="text" id="work-location">
             </div>
             <br>
             <div>
-                <label for="" >Location</label>
-                <input type="text" id="location">
+                <label for="date-from" >Date form (mm/yyyy)</label>
+                <input type="text" id="date-from">
             </div>
             <br>
-            <input type="button" value="submit" id="submit-languages">
+            <div>
+                <label for="date-to" >Date to (mm/yyyy)</label>
+                <input type="text" id="date-to">
+            </div>
+            <br>
+            <div class="complete-desc">
+                <label for="work-exp-desc" >Description(Enter pointwise)</label>
+                <textarea class="work-exp-desc" name="description" rows="3" cols="40"></textarea>
+            </div>
+            <br>
+            <!-- <button id='add-desc'>+</button> -->
+            <input type="button" value="+" id="add-desc">
+            <input type="button" value="submit" id="submit-work-exp">
         </div>
         <br>
 
@@ -111,7 +225,7 @@
                 <img src='images/picture.jpg' />
             </div>
             <div class="introduction">
-                <h1>SHREYANSH JAIN</h1>
+                <h1 id="nameHeading">SHREYANSH JAIN</h1>
                 <h4>Software Engineer Role</h4>
                 <hr>
                 <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde atque consequatur fuga quaerat iste sapiente laudantium, impedit commodi. 
@@ -121,24 +235,24 @@
             </div>
             <div class="links">
                 <div class="link-icon">
-                <div class="align-icon"><i class="fa-brands fa-linkedin icons"></i></div>
-                <div class="icon-text"><a href="https://linkedin.com/in/shreyansh-jain-695320192/" target="_blank" class="iconic">linkedin/shreyanshjain</a></div>
+                <!-- <div class="align-icon"><i class="fa-brands fa-linkedin icons"></i></div>
+                <div class="icon-text"><a href="https://linkedin.com/in/shreyansh-jain-695320192/" target="_blank" class="iconic">linkedin/shreyanshjain</a></div> -->
                 </div>
                 <div class="link-icon">
-                <div class="align-icon"><i class="fa-solid fa-envelope icons"></i></div>
-                <div class="icon-text"><a href="mailto: s2108j@gmail.com" target="_blank" class="iconic">s2108j@gmail.com</a></div>
+                <!-- <div class="align-icon"><i class="fa-solid fa-envelope icons"></i></div>
+                <div class="icon-text"><a href="mailto: s2108j@gmail.com" target="_blank" class="iconic">s2108j@gmail.com</a></div> -->
                 </div>
                 <div class="link-icon">
-                <div class="align-icon"><i class="fa-solid fa-mobile icons"></i></div>
-                <div class="icon-text" ><a href="tel:+9638749427" target="_blank" class="iconic">9638749427</a></div>
+                <!-- <div class="align-icon"><i class="fa-solid fa-mobile icons"></i></div>
+                <div class="icon-text" ><a href="tel:+9638749427" target="_blank" class="iconic">9638749427</a></div> -->
                 </div>
                 <div class="link-icon">
-                <div class="align-icon"><i class="fa-solid fa-location-dot icons"></i></div>
-                <div class="icon-text"><a href="https://goo.gl/maps/UQarQysp7au5hPoXA" target="_blank" class="iconic">Ahmedabad</a></div>
+                <!-- <div class="align-icon"><i class="fa-solid fa-location-dot icons"></i></div>
+                <div class="icon-text"><a href="https://goo.gl/maps/UQarQysp7au5hPoXA" target="_blank" class="iconic">Ahmedabad</a></div> -->
                 </div>
                 <div class="link-icon">
-                <div class="align-icon"><i class="fa-brands fa-square-twitter icons"></i></div>
-                <div class="icon-text"><a href="https://twitter.com/shreyansh_2108" target="_blank" class="iconic">shreyansh_2108</a></div>
+                <!-- <div class="align-icon"><i class="fa-brands fa-square-twitter icons"></i></div>
+                <div class="icon-text"><a href="https://twitter.com/shreyansh_2108" target="_blank" class="iconic">shreyansh_2108</a></div> -->
                 </div>
             </div>
             <div id="add-skills">
@@ -226,7 +340,8 @@
         </div>
         <div class="content-container">
             <h2>WORK EXPERIENCE</h2>
-            <h4>Product Engineer Intern</h4>
+            <div class="work-exp-container"></div>
+            <!-- <h4>Product Engineer Intern</h4>
             <h4 id="company-name">Deloitte</h4>
             <div class="date-place">
                 <div class="date">05/2022 - 08/2022</div>
@@ -244,7 +359,7 @@
             </div>
         
         
-            <!-- <h3>WORK EXPERIENCE</h3> -->
+          
             <h4>Product Engineer Intern</h4>
             <h4 id="company-name">Deloitte</h4>
             <div class="date-place">
@@ -261,12 +376,13 @@
                     <li>Developed an application using web scrapping in python.</li>
                    
                 </ul>
-            </div>
+            </div> -->
         
         </div>
         <div class="content-container">
             <h2>PROJECTS</h2>
-            <h4 class="project">Football League</h4>
+            <div class="project-container"></div>
+            <!-- <h4 class="project">Football League</h4>
             
             <div class="date-place">
                 <div class="date">05/2022 - 08/2022</div>
@@ -292,13 +408,14 @@
                     <li>The admins can enter the new match details, and the users can see various stats and other details of the
                         league.</li>
                 </ul>
-            </div>
+            </div> -->
         
             
         </div>
         <div class="education">
             <h2>EDUCATION</h2>
-            <h4 class="degree">B.Tech in Computer Science </h4>
+            <div class="education-container"></div>
+            <!-- <h4 class="degree">B.Tech in Computer Science </h4>
             <h4>The LNM Institute of Information Technology </h4>
             <div class="date-place">
                 <div class="date">08/2019 - 08/2023</div>
@@ -310,7 +427,7 @@
             <div class="date-place">
                 <div class="date">08/2019 - 08/2023</div>
                 <div class="place">CGPA - 7.17</div>
-            </div>
+            </div> -->
         </div>
         
 
