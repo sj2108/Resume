@@ -92,34 +92,30 @@ topic.addEventListener("change",()=>{
             // let removeLanguage=document.getElementById("remove-skills");
             let parentDiv=document.getElementsByClassName("form");
             parentDiv[0].addEventListener("click",(e)=> {
+                 e.preventDefault();
                 if (e.target.nodeName === 'BUTTON') {
-                    if(e.target.textContent==="X")
-                    {
-                        console.log((e.target).textContent);
-                        let parent=(e.target.parentNode).parentNode;
-                        console.log(parent);
-                        element_id=parent.getAttribute("id");
-                        element_id1=element_id.split("-")[1];
-                        element_id2=element_id.split("-")[2];
-                        console.log(element_id);
-                        element_id="right-"+element_id1+"-"+element_id2;
-                        parent.remove();
-
-                        let element_remove=document.getElementById(element_id);
-                        console.log(element_id);
-                        // console.log(element_remove);
-                        element_remove.remove();
-                    }
-                    else
+                    if(e.target.textContent==="Edit")
                     {
                         let parent=(e.target.parentNode).parentNode;
-                        element_id=parent.getAttribute("id");
+                        let element_id=parent.getAttribute("id");
                         let element_id1=element_id.split('-')[1];
                         let element_id2=element_id.split('-')[2];
                         element_id=element_id1+"-"+element_id2;
                         console.log(element_id2);
+                        let cancelButton=document.getElementById("cancel-"+element_id2);
+                        let confirmButton=document.getElementById("confirm-"+element_id2);
+                        let submitButton=document.getElementById("submit-"+element_id2);
+                        cancelButton.style.display="block";
+                        confirmButton.style.display="block";
+                        submitButton.style.display="none";
+                        
+                        // <input type="button" value="submit" id="submit-education">
+                        // `    <input type="button" value="confirm" id="confirm-education">
+                        //     <br>
+                        //     <input type="button" value="cancel" id="cancel-education"></input>`
                         if(element_id2==="education")
                         {
+                            let eduIndex=-1;
                             for(let i=0;i<educationList.length;i++)
                             {
                                 // degree: degreeName.value,specialization:specializationEdu.value,college:collegeName.value,From:dateFromEdu.value,dateTo:dateToEdu.value,cgpa:courseCgpa.value,id:idi
@@ -131,10 +127,32 @@ topic.addEventListener("change",()=>{
                                     dateFromEdu.value=educationList[i].dateFrom;
                                     dateToEdu.value=educationList[i].dateTo;
                                     courseCgpa.value=educationList[i].cgpa;
-                                    educationList.splice(i,1);
+                                    eduIndex=i;
+                                    
                                     break;
                                 }
                             }
+                            confirmButton.addEventListener("click",()=>{
+                                educationList.splice(eduIndex,1);
+                                parent.remove();
+                                element_id="right-"+element_id1+"-"+element_id2;
+                                let element_remove=document.getElementById(element_id);
+                                console.log(element_id);
+                                // console.log(element_remove);
+                                element_remove.remove();
+                                submitEducation();
+                                cancelButton.style.display="none";
+                                confirmButton.style.display="none";
+                                submitButton.style.display="block";
+
+                                
+                                
+                            })
+                            cancelButton.addEventListener("click",()=>{
+                                cancelButton.style.display="none";
+                                confirmButton.style.display="none";
+                                submitButton.style.display="block";
+                            })
 
 
                         }
@@ -188,6 +206,26 @@ topic.addEventListener("change",()=>{
                                 }
                             }
                         }
+                        // parent.remove();
+                        // element_id="right-"+element_id1+"-"+element_id2;
+                        // let element_remove=document.getElementById(element_id);
+                        // console.log(element_id);
+                        // // console.log(element_remove);
+                        // element_remove.remove();
+
+
+                        
+                        
+                    }
+                    else if(e.target.textContent==="X")
+                    {
+                        console.log((e.target).textContent);
+                        let parent=(e.target.parentNode).parentNode;
+                        console.log(parent);
+                        element_id=parent.getAttribute("id");
+                        element_id1=element_id.split("-")[1];
+                        element_id2=element_id.split("-")[2];
+                        console.log(element_id);
                         element_id="right-"+element_id1+"-"+element_id2;
                         parent.remove();
 
@@ -195,6 +233,8 @@ topic.addEventListener("change",()=>{
                         console.log(element_id);
                         // console.log(element_remove);
                         element_remove.remove();
+                        
+                        
                         
                     }
                    
@@ -536,8 +576,7 @@ topic.addEventListener("change",()=>{
 
 
             
-
-            educationButton.addEventListener("click",()=>
+            submitEducation=()=>
             {
                 
                 
@@ -595,7 +634,8 @@ topic.addEventListener("change",()=>{
                 dateFromEdu.value="";
                 dateToEdu.value="";
                 courseCgpa.value="";
-            })
+            }
+            educationButton.addEventListener("click",submitEducation)
 
 
             
