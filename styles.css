@@ -114,6 +114,10 @@ h2
     height: 28px;
     /* align-items: center; */
 }
+#cancel-education,#confirm-education
+{
+    display: none;
+}
 h4
 {
     /* margin-top: 15px; */

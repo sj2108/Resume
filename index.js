@@ -1,6 +1,13 @@
 let topic=document.getElementById("topic");
 
-
+let educationList=[];
+let degreeName=document.getElementById("degree-name");
+let specializationEdu=document.getElementById("specialization");
+let collegeName=document.getElementById("college-name");
+let dateFromEdu=document.getElementById("date-from-edu");
+let dateToEdu=document.getElementById("date-to-edu");
+let courseCgpa=document.getElementById("cgpa")
+let educationButton=document.getElementById("submit-education");
 
 let lastTopicValue="None";
 // console.log(topic.value);
@@ -75,7 +82,7 @@ topic.addEventListener("change",()=>{
 
                 parent_Div.appendChild(display_Div);
                 parent_Div.style.display="flex";
-                
+                console.log("HELOO");
 
 
                 skillName.value="";
@@ -86,20 +93,149 @@ topic.addEventListener("change",()=>{
             let parentDiv=document.getElementsByClassName("form");
             parentDiv[0].addEventListener("click",(e)=> {
                 if (e.target.nodeName === 'BUTTON') {
-                    // console.log(e.target);
-                    // let value=(e.target).getAttribute('id')
-                    // console.log(value);
+                    if(e.target.textContent==="X")
+                    {
+                        console.log((e.target).textContent);
+                        let parent=(e.target.parentNode).parentNode;
+                        console.log(parent);
+                        element_id=parent.getAttribute("id");
+                        element_id1=element_id.split("-")[1];
+                        element_id2=element_id.split("-")[2];
+                        console.log(element_id);
+                        element_id="right-"+element_id1+"-"+element_id2;
+                        parent.remove();
 
-                    let parent=(e.target.parentNode).parentNode;
-                    console.log(parent);
-                    element_id=parent.getAttribute("id");
-                    element_id=element_id.split("-")[1];
-                    element_id="right-"+element_id;
-                    parent.remove();
+                        let element_remove=document.getElementById(element_id);
+                        console.log(element_id);
+                        // console.log(element_remove);
+                        element_remove.remove();
+                    }
+                    else
+                    {
+                        console.log(e.target)
+                        // let parent=(e.target.parentNode).parentNode;
+                        // console.log(parent);
+                        // element_id=parent.getAttribute("id");
+                        // let element_id1=element_id.split('-')[1];
+                        // let element_id2=element_id.split('-')[2];
+                        // element_id=element_id1+"-"+element_id2;
+                        // console.log(element_id2);
+                        // let confirmButton=document.getElementById("confirm-education");
+                        // confirmButton.style.display="block";
+                        console.log("Hello");
+                        // confirmButton.value="confirm";
+                        // let cancelButton=document.getElementById("cancel-education");
+                        // cancelButton.style.display="block";
+                        // let submitButton=document.getElementById("submit-education");
+                        // submitButton.style.display="none";
+                        
+                        // if(element_id2==="education")
+                        // {
+                        //     // let flag=0;
+                        //     // <input type="button" value="submit" id="submit-education">
+                        //     // <input type="button" value="cancel" id="cancel-education"></input>
+                        //     // let educationIndex=-1;
+                        //     // for(let i=0;i<educationList.length;i++)
+                        //     // {
+                                
+                        //     //     // degree: degreeName.value,specialization:specializationEdu.value,college:collegeName.value,From:dateFromEdu.value,dateTo:dateToEdu.value,cgpa:courseCgpa.value,id:idi
+                        //     //     if(educationList[i].id===element_id)
+                        //     //     {
+                        //     //         degreeName.value=educationList[i].degree;
+                        //     //         specializationEdu.value=educationList[i].specialization;
+                        //     //         collegeName.value=educationList[i].college;
+                        //     //         dateFromEdu.value=educationList[i].dateFrom;
+                        //     //         dateToEdu.value=educationList[i].dateTo;
+                        //     //         courseCgpa.value=educationList[i].cgpa;
+                        //     //         educationIndex=i;
+                    
+                        //     //         // educationList.splice(i,1);
+                        //     //         break;
+                        //     //     }
+                        //     // }
+                        //     // cancelButton.addEventListener("click",()=>{
+                        //     //     element_id="right-"+element_id1+"-"+element_id2;
+                                
+                        //     //     confirmButton.style.display="none";
+                        //     //     // confirmButton.value="confirm";
+                        //     //     // let cancelButton=document.getElementById("cancel-education");
+                        //     //     cancelButton.style.display="none";
+                        //     //     // let submitButton=document.getElementById("submit-education");
+                        //     //     submitButton.style.display="block";
+                        //     // })
+                        //     // confirmButton.addEventListener("click",()=>{
+                        //     //     educationList.splice(educationIndex,1);
+                        //     //     parent.remove();
+                        //     //     let element_remove=document.getElementById(element_id);
+                        //     //     console.log(element_id);
+                        //     //     element_remove.remove();
+                        //     //     submitEducation();
+                        //     //     confirmButton.style.display="none";
+                        //     //     // confirmButton.value="confirm";
+                        //     //     // let cancelButton=document.getElementById("cancel-education");
+                        //     //     cancelButton.style.display="none";
+                        //     //     // let submitButton=document.getElementById("submit-education");
+                        //     //     submitButton.style.display="block";
 
-                    let element_remove=document.getElementById(element_id);
-                    // console.log(element_remove);
-                    element_remove.remove();
+                        //     // })
+
+
+                        // }
+                        // else if(element_id2==="project")
+                        // {
+                        //     let first_desc=document.getElementsByClassName("project-desc");
+                        //     projectName.value="";
+                        //     dateFromProject.value="";
+                        //     dateToProject.value="";
+                        //     descrProject[0].value="";
+                        //     // console.log("hello");
+                        //     for (let i = 1; i < first_desc.length; ) 
+                        //     {
+                        //         // console.log(descrProject[i].className);
+                                
+                        //         first_desc[i].remove();
+                        //     }
+                        //     for(let i=0;i<projectList.length;i++)
+                        //     {
+                        //         // degree: degreeName.value,specialization:specializationEdu.value,college:collegeName.value,From:dateFromEdu.value,dateTo:dateToEdu.value,cgpa:courseCgpa.value,id:idi
+                        //         if(projectList[i].id===element_id)
+                        //         {
+                        //             projectName.value=projectList[i].name;
+                        //             dateFromProject.value=projectList[i].dateFrom;
+                        //             dateToProject.value=projectList[i].dateTo;
+                        //             // courseCgpa.value=educationList[i].cgpa;
+                                    
+                        //             let first_desc=document.getElementsByClassName("project-desc");
+                        //             // console.log(projectList[i][description[0]]);
+                        //             first_desc[0].value=projectList[i].description[0];
+                        //             // console.log(first_desc[0]);
+                        //             // first_desc[0].innerHTML.textContent=projectList[i].description[0];
+                        //             for(let j=1;j<projectList[i].description.length;j++)
+                        //             {
+                        //                 let parentDiv=document.getElementsByClassName("complete-project-desc");
+                        //                 console.log(parentDiv[0]);
+                        //                 let newDesc=document.createElement("textarea");
+                        //                 newDesc.value=projectList[i].description[j];
+                        //                 console.log(newDesc);
+                        //                 newDesc.classList.add("project-desc");
+                        //                 // newDesc.name="description";
+                        //                 newDesc.rows="3";
+                        //                 newDesc.cols="40";
+                        //                 console.log(newDesc);
+                        //                 parentDiv[0].appendChild(newDesc);
+                        //             }
+                        //             projectList.splice(i,1);
+                        //             console.log(projectList);
+                        //             // let project_element={name: projectName.value,dateFrom:dateFromProject.value,dateTo:dateToProject.value,description:[],id:idi};
+                        //             break;
+                        //         }
+                        //     }
+                        // }
+                        
+                        
+                        
+                        
+                    }
                    
                 }
             })
@@ -212,74 +348,7 @@ topic.addEventListener("change",()=>{
                 {
                     parentDiv[4].innerHTML= "<div class='align-icon'><i class='fa-brands fa-square-twitter icons'></i></div><div class='icon-text'><a href="+user_twitter+" target='_blank' class='iconic'>"+userName_twitter+"</a></div>"
                 }
-                // <div class="link-icon">
-                // <div class="align-icon"><i class="fa-solid fa-envelope icons"></i></div>
-                // <div class="icon-text"><a href="mailto: s2108j@gmail.com" target="_blank" class="iconic">s2108j@gmail.com</a></div>
-                // </div>
-                // <div class="link-icon">
-                // <div class="align-icon"><i class="fa-solid fa-mobile icons"></i></div>
-                // <div class="icon-text" ><a href="tel:+9638749427" target="_blank" class="iconic">9638749427</a></div>
-                // </div>
-                // <div class="link-icon">
-                // <div class="align-icon"><i class="fa-solid fa-location-dot icons"></i></div>
-                // <div class="icon-text"><a href="https://goo.gl/maps/UQarQysp7au5hPoXA" target="_blank" class="iconic">Ahmedabad</a></div>
-                // </div>
-                // <div class="link-icon">
-                // <div class="align-icon"><i class="fa-brands fa-square-twitter icons"></i></div>
-                // <div class="icon-text"><a href="https://twitter.com/shreyansh_2108" target="_blank" class="iconic">shreyansh_2108</a></div>
-                // </div>
-                // <div class="link-icon">
-                // <div class="align-icon"><i class="fa-brands fa-linkedin icons"></i></div>
-                // <div class="icon-text"><a href="https://linkedin.com/in/shreyansh-jain-695320192/" target="_blank" class="iconic">linkedin/shreyanshjain</a></div>
-                // </div>
                 
-                // let language_element={name: languageName.value,rating: languageRating.value };
-                // languageList.push(language_element);
-                // // console.log(languageList);
-                // let idi = "id" + Math.random().toString(16).slice(2);
-                // let leftID="left-"+idi;
-                // let rightID="right-"+idi;
-                
-                // let existingDiv = document.getElementsByClassName("languages");
-                // let newDiv = document.createElement("div");
-                // newDiv.className="inside-languages-container";
-                // newDiv.id=rightID;
-                // newDiv.innerHTML="<h4>"+languageName.value+"</h4><div class='place-circles'></div>";
-                // existingDiv[0].appendChild(newDiv);
-                // insideNewDiv=document.getElementsByClassName("place-circles");
-                // for(let i=0;i<languageRating.value;i++)
-                // {
-                //     let newDiv = document.createElement("div");
-                //     newDiv.innerHTML="<i class='fa-solid fa-circle rating'></i>"
-                //     insideNewDiv[languageList.length-1].appendChild(newDiv);
-                // }
-                // for(let i=0;i<(5-languageRating.value);i++)
-                // {
-                //     let newDiv = document.createElement("div");
-                //     newDiv.innerHTML="<i class='fa-regular fa-circle unrate'></i>"
-                //     insideNewDiv[languageList.length-1].appendChild(newDiv);
-
-                // }
-                // let parent_Div=document.querySelector(".languages-form");
-                // let nextDiv=document.createElement("div");
-                // nextDiv.class="subform";
-                // nextDiv.id=leftID;
-                // parent_Div.appendChild(nextDiv);
-                // parent_Div=nextDiv;
-                // let display_Div=document.createElement("div");
-                // display_Div.innerHTML="<h4>"+languageName.value+"</h4>";
-
-                // display_Div.style.border="2px solid black";
-                // parent_Div.appendChild(display_Div);
-                // display_Div=document.createElement("div");
-                // display_Div.innerHTML="<button class='remove-languages'>X</button>";
-                // //  let removeButton=document.getElementsByClass("")
-
-                // parent_Div.appendChild(display_Div);
-                // parent_Div.style.display="flex";
-                
-                // languageName.value="";
-                // languageRating.value="";
                 linkedinLink.value="";
                 mailLink.value="";
                 phoneLink.value="";
@@ -299,10 +368,8 @@ topic.addEventListener("change",()=>{
             let dateTo=document.getElementById("date-to");
             let descr=document.getElementsByClassName("work-exp-desc");
             let workExpButton=document.getElementById("submit-work-exp");
-            // <div class="complete-desc">
-            //     <label for="work-exp-desc" >Description(Enter pointwise)</label>
-            //     <textarea id="work-exp-desc" name="description" rows="3" cols="40"></textarea>
-            // </div>
+            
+
             addDescButton.addEventListener("click",()=>
             {
                 
@@ -326,8 +393,12 @@ topic.addEventListener("change",()=>{
                 let workExp_element={role: roleName.value,company: companyName.value,location:workLocation.value,dateFrom:dateFrom.value,dateTo:dateTo.value,description:[]};
                 for (var i = 0; i < descr.length; i++) 
                 {
-                    workExp_element.description.push(descr[i]);
+                    workExp_element.description.push(descr[i].value);
                 }
+                mmFrom=dateFrom.value.split("-")[1];
+                mmTo=dateTo.value.split("-")[1];
+                yyyyTo=dateFrom.value.split("-")[0];
+                yyyyFrom=dateTo.value.split("-")[0];
                 let idi = "id" + Math.random().toString(16).slice(2);
                 let leftID="left-"+idi;
                 let rightID="right-"+idi;
@@ -339,7 +410,7 @@ topic.addEventListener("change",()=>{
                 <h4>${roleName.value}</h4>
                 <h4 id="company-name">${companyName.value}</h4>
                 <div class="date-place">
-                    <div class="date">${dateFrom.value} - ${dateTo.value}</div>
+                    <div class="date">${mmFrom}-${yyyyFrom} - ${mmTo}-${yyyyTo}</div>
                     <div class="place">${workLocation.value}</div>
 
                 </div>
@@ -381,9 +452,13 @@ topic.addEventListener("change",()=>{
                 workLocation.value="";
                 dateFrom.value="";
                 dateTo.value="";
-                for (let i = 0; i < descr.length; i++) 
+                descr[0].value="";
+                // console.log("hello");
+                for (let i = 1; i < descrProject.length; ) 
                 {
-                    descr[i].value="";
+                    // console.log(descrProject[i].className);
+                    
+                    descr[i].remove();
                 }
 
             })
@@ -416,14 +491,21 @@ topic.addEventListener("change",()=>{
 
             projectButton.addEventListener("click",()=>
             {
-                let project_element={name: projectName.value,dateFrom:dateFromProject.value,dateTo:dateToProject.value,description:[]};
+                mmFrom=dateFromProject.value.split("-")[1];
+                mmTo=dateToProject.value.split("-")[1];
+                yyyyTo=dateFromProject.value.split("-")[0];
+                yyyyFrom=dateToProject.value.split("-")[0];
+                let idi = "id" + Math.random().toString(16).slice(2);
+                let leftID="left-"+idi+"-project";
+                let rightID="right-"+idi+"-project";
+                let type="-project";
+                idi=idi+type;
+                let project_element={name: projectName.value,dateFrom:dateFromProject.value,dateTo:dateToProject.value,description:[],id:idi};
                 for (var i = 0; i < descrProject.length; i++) 
                 {
-                    project_element.description.push(descrProject[i]);
+                    console.log(descrProject[i].value);
+                    project_element.description.push(descrProject[i].value);
                 }
-                let idi = "id" + Math.random().toString(16).slice(2);
-                let leftID="left-"+idi;
-                let rightID="right-"+idi;
                 let parentDiv=document.getElementsByClassName("project-container");
                 let newDiv=document.createElement("div");
                 newDiv.id=rightID;
@@ -432,7 +514,7 @@ topic.addEventListener("change",()=>{
                
                 <h4 class="project">${projectName.value}</h4>
                 <div class="date-place">
-                    <div class="date">${dateFromProject.value} - ${dateToProject.value}</div>
+                    <div class="date">${mmFrom}-${yyyyFrom} - ${mmTo}-${yyyyTo} </div>
 
                 </div>
                 `
@@ -463,41 +545,51 @@ topic.addEventListener("change",()=>{
                 display_Div.style.border="2px solid black";
                 parent_Div.appendChild(display_Div);
                 display_Div=document.createElement("div");
-                display_Div.innerHTML="<button class='remove-languages'>X</button>";
+                display_Div.innerHTML="<button class='remove-project'>X</button>";
                 //  let removeButton=document.getElementsByClass("")
                 projectList.push(project_element);
+                parent_Div.appendChild(display_Div);
+                display_Div=document.createElement("div");
+                display_Div.innerHTML="<button class='edit-project'>Edit</button>";
+                //  let removeButton=document.getElementsByClass("")
+                // educationList.push(education_element);
                 parent_Div.appendChild(display_Div);
                 parent_Div.style.display="flex";
               
                 projectName.value="";
-                dateFromProject="";
-                dateToProject="";
-                for (let i = 0; i < descr.length; i++) 
+                dateFromProject.value="";
+                dateToProject.value="";
+                descrProject[0].value="";
+                // console.log("hello");
+                for (let i = 1; i < descrProject.length; ) 
                 {
-                    descrProject[i].value="";
+                    // console.log(descrProject[i].className);
+                    
+                    descrProject[i].remove();
                 }
+            
 
             })
             
   
 
 
-            let educationList=[];
-            let degreeName=document.getElementById("degree-name");
-            let specializationEdu=document.getElementById("specialization");
-            let collegeName=document.getElementById("college-name");
-            let dateFromEdu=document.getElementById("date-from-edu");
-            let dateToEdu=document.getElementById("date-to-edu");
-            let courseCgpa=document.getElementById("cgpa")
-            let educationButton=document.getElementById("submit-education");
-
-            educationButton.addEventListener("click",()=>
+            
+            let submitEducation=()=>
             {
-                let education_element={degree: degreeName.value,specialization:specializationEdu.value,college:collegeName.value,From:dateFromEdu.value,dateTo:dateToEdu.value,cgpa:courseCgpa.value};
+                
                 
                 let idi = "id" + Math.random().toString(16).slice(2);
-                let leftID="left-"+idi;
-                let rightID="right-"+idi;
+                let leftID="left-"+idi+"-education";
+                let rightID="right-"+idi+"-education";
+                let type="-education"
+                idi=idi+type;
+                console.log(leftID);
+                let education_element={degree: degreeName.value,specialization:specializationEdu.value,college:collegeName.value,dateFrom:dateFromEdu.value,dateTo:dateToEdu.value,cgpa:courseCgpa.value,id:idi};
+                mmFrom=dateFromEdu.value.split("-")[1];
+                mmTo=dateToEdu.value.split("-")[1];
+                yyyyTo=dateFromEdu.value.split("-")[0];
+                yyyyFrom=dateToEdu.value.split("-")[0];
                 let parentDiv=document.getElementsByClassName("education-container");
                 let newDiv=document.createElement("div");
                 newDiv.id=rightID;
@@ -506,7 +598,7 @@ topic.addEventListener("change",()=>{
                 <h4 class="degree">${degreeName.value} in ${specializationEdu.value} </h4>
                 <h4>${collegeName.value} </h4>
                 <div class="date-place">
-                    <div class="date">${dateFromEdu.value} - ${dateToEdu.value}</div>
+                    <div class="date">${mmFrom}-${yyyyFrom} - ${mmTo}-${yyyyTo}</div>
                     <div class="place">CGPA- ${courseCgpa.value}</div>
                 </div>
                 <br>
@@ -524,9 +616,14 @@ topic.addEventListener("change",()=>{
                 display_Div.style.border="2px solid black";
                 parent_Div.appendChild(display_Div);
                 display_Div=document.createElement("div");
-                display_Div.innerHTML="<button class='remove-languages'>X</button>";
+                display_Div.innerHTML="<button class='remove-education'>X</button>";
                 //  let removeButton=document.getElementsByClass("")
                 educationList.push(education_element);
+                parent_Div.appendChild(display_Div);
+                display_Div=document.createElement("div");
+                display_Div.innerHTML="<button class='edit-education'>Edit</button>";
+                //  let removeButton=document.getElementsByClass("")
+                // educationList.push(education_element);
                 parent_Div.appendChild(display_Div);
                 parent_Div.style.display="flex";
               
@@ -535,53 +632,12 @@ topic.addEventListener("change",()=>{
                 collegeName.value="";
                 dateFromEdu.value="";
                 dateToEdu.value="";
-                courseCgpa="";
-            })
+                courseCgpa.value="";
+            }
+            educationButton.addEventListener("click",submitEducation);
 
 
             
 
 
-        //     <div class="education-form sub-form">
-                        
-        //                 <br>
-        //                 <div>
-        //                 <label for="degree-name" >Degree</label>
-        //                 <input type="text" id="degree-name">
-        //                 </div>
-                        
-        //                 <br>
-        //                 <div>
-        //                     <label for="specialization" >Specialization</label>
-        //                     <input type="text" id="specialization">
-        //                 </div>
-        //                 <br>
-        //                 <br>
-        //                 <div>
-        //                     <label for="college-name" >Institute Name</label>
-        //                     <input type="text" id="college-name">
-        //                 </div>
-        //                 <br>
-        //                 <div>
-        //                     <label for="date-from-edu" >Date from (mm/yyyy)</label>
-        //                     <input type="text" id="date-from-edu">
-        //                 </div>
-        //                 <div>
-        //                     <label for="date-to-edu" >Date to (mm/yyyy)</label>
-        //                     <input type="text" id="date-to-edu">
-        //                 </div>
-        //                 <br>
-                        
-        //                 <input type="button" value="submit" id="submit-education">
-        //             </div>
-
-              
-        //     <div class="education-container"></div>
-            
-        //     <h4 class="degree">B.Tech in Computer Science </h4>
-        //     <h4>The LNM Institute of Information Technology </h4>
-        //     <div class="date-place">
-        //         <div class="date">08/2019 - 08/2023</div>
-        //         <div class="place">CGPA - 7.17</div>
-        //     </div>
-        // </div>
+      
