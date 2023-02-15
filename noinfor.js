@@ -93,6 +93,7 @@ topic.addEventListener("change",()=>{
             let parentDiv=document.getElementsByClassName("form");
             parentDiv[0].addEventListener("click",(e)=> {
                 if (e.target.nodeName === 'BUTTON') {
+                    // console.log(e.target);
                     if(e.target.textContent==="X")
                     {
                         console.log((e.target).textContent);
@@ -110,91 +111,130 @@ topic.addEventListener("change",()=>{
                         // console.log(element_remove);
                         element_remove.remove();
                     }
-                    else
+                    if(e.target.textContent==="Edit")
                     {
-                        let parent=(e.target.parentNode).parentNode;
-                        element_id=parent.getAttribute("id");
-                        let element_id1=element_id.split('-')[1];
-                        let element_id2=element_id.split('-')[2];
-                        element_id=element_id1+"-"+element_id2;
-                        console.log(element_id2);
-                        if(element_id2==="education")
-                        {
-                            for(let i=0;i<educationList.length;i++)
-                            {
-                                // degree: degreeName.value,specialization:specializationEdu.value,college:collegeName.value,From:dateFromEdu.value,dateTo:dateToEdu.value,cgpa:courseCgpa.value,id:idi
-                                if(educationList[i].id===element_id)
-                                {
-                                    degreeName.value=educationList[i].degree;
-                                    specializationEdu.value=educationList[i].specialization;
-                                    collegeName.value=educationList[i].college;
-                                    dateFromEdu.value=educationList[i].dateFrom;
-                                    dateToEdu.value=educationList[i].dateTo;
-                                    courseCgpa.value=educationList[i].cgpa;
-                                    educationList.splice(i,1);
-                                    break;
-                                }
-                            }
-
-
-                        }
-                        else if(element_id2==="project")
-                        {
-                            let first_desc=document.getElementsByClassName("project-desc");
-                            projectName.value="";
-                            dateFromProject.value="";
-                            dateToProject.value="";
-                            descrProject[0].value="";
-                            // console.log("hello");
-                            for (let i = 1; i < first_desc.length; ) 
-                            {
-                                // console.log(descrProject[i].className);
+                        console.log(e.target);
+                        // let parent=(e.target.parentNode).parentNode;
+                        // console.log(parent);
+                        // element_id=parent.getAttribute("id");
+                        // let element_id1=element_id.split('-')[1];
+                        // let element_id2=element_id.split('-')[2];
+                        // element_id=element_id1+"-"+element_id2;
+                        // console.log(element_id2);
+                        // let confirmButton=document.getElementById("confirm-education");
+                        // confirmButton.style.display="block";
+                        console.log("Hello");
+                        // confirmButton.value="confirm";
+                        // let cancelButton=document.getElementById("cancel-education");
+                        // cancelButton.style.display="block";
+                        // let submitButton=document.getElementById("submit-education");
+                        // submitButton.style.display="none";
+                        
+                        // if(element_id2==="education")
+                        // {
+                        //     // let flag=0;
+                        //     // <input type="button" value="submit" id="submit-education">
+                        //     // <input type="button" value="cancel" id="cancel-education"></input>
+                        //     // let educationIndex=-1;
+                        //     // for(let i=0;i<educationList.length;i++)
+                        //     // {
                                 
-                                first_desc[i].remove();
-                            }
-                            for(let i=0;i<projectList.length;i++)
-                            {
-                                // degree: degreeName.value,specialization:specializationEdu.value,college:collegeName.value,From:dateFromEdu.value,dateTo:dateToEdu.value,cgpa:courseCgpa.value,id:idi
-                                if(projectList[i].id===element_id)
-                                {
-                                    projectName.value=projectList[i].name;
-                                    dateFromProject.value=projectList[i].dateFrom;
-                                    dateToProject.value=projectList[i].dateTo;
-                                    // courseCgpa.value=educationList[i].cgpa;
-                                    
-                                    let first_desc=document.getElementsByClassName("project-desc");
-                                    // console.log(projectList[i][description[0]]);
-                                    first_desc[0].value=projectList[i].description[0];
-                                    // console.log(first_desc[0]);
-                                    // first_desc[0].innerHTML.textContent=projectList[i].description[0];
-                                    for(let j=1;j<projectList[i].description.length;j++)
-                                    {
-                                        let parentDiv=document.getElementsByClassName("complete-project-desc");
-                                        console.log(parentDiv[0]);
-                                        let newDesc=document.createElement("textarea");
-                                        newDesc.value=projectList[i].description[j];
-                                        console.log(newDesc);
-                                        newDesc.classList.add("project-desc");
-                                        // newDesc.name="description";
-                                        newDesc.rows="3";
-                                        newDesc.cols="40";
-                                        console.log(newDesc);
-                                        parentDiv[0].appendChild(newDesc);
-                                    }
-                                    projectList.splice(i,1);
-                                    console.log(projectList);
-                                    // let project_element={name: projectName.value,dateFrom:dateFromProject.value,dateTo:dateToProject.value,description:[],id:idi};
-                                    break;
-                                }
-                            }
-                        }
-                        element_id="right-"+element_id1+"-"+element_id2;
-                        parent.remove();
+                        //     //     // degree: degreeName.value,specialization:specializationEdu.value,college:collegeName.value,From:dateFromEdu.value,dateTo:dateToEdu.value,cgpa:courseCgpa.value,id:idi
+                        //     //     if(educationList[i].id===element_id)
+                        //     //     {
+                        //     //         degreeName.value=educationList[i].degree;
+                        //     //         specializationEdu.value=educationList[i].specialization;
+                        //     //         collegeName.value=educationList[i].college;
+                        //     //         dateFromEdu.value=educationList[i].dateFrom;
+                        //     //         dateToEdu.value=educationList[i].dateTo;
+                        //     //         courseCgpa.value=educationList[i].cgpa;
+                        //     //         educationIndex=i;
+                    
+                        //     //         // educationList.splice(i,1);
+                        //     //         break;
+                        //     //     }
+                        //     // }
+                        //     // cancelButton.addEventListener("click",()=>{
+                        //     //     element_id="right-"+element_id1+"-"+element_id2;
+                                
+                        //     //     confirmButton.style.display="none";
+                        //     //     // confirmButton.value="confirm";
+                        //     //     // let cancelButton=document.getElementById("cancel-education");
+                        //     //     cancelButton.style.display="none";
+                        //     //     // let submitButton=document.getElementById("submit-education");
+                        //     //     submitButton.style.display="block";
+                        //     // })
+                        //     // confirmButton.addEventListener("click",()=>{
+                        //     //     educationList.splice(educationIndex,1);
+                        //     //     parent.remove();
+                        //     //     let element_remove=document.getElementById(element_id);
+                        //     //     console.log(element_id);
+                        //     //     element_remove.remove();
+                        //     //     submitEducation();
+                        //     //     confirmButton.style.display="none";
+                        //     //     // confirmButton.value="confirm";
+                        //     //     // let cancelButton=document.getElementById("cancel-education");
+                        //     //     cancelButton.style.display="none";
+                        //     //     // let submitButton=document.getElementById("submit-education");
+                        //     //     submitButton.style.display="block";
 
-                        let element_remove=document.getElementById(element_id);
-                        console.log(element_id);
-                        // console.log(element_remove);
-                        element_remove.remove();
+                        //     // })
+
+
+                        // }
+                        // else if(element_id2==="project")
+                        // {
+                        //     let first_desc=document.getElementsByClassName("project-desc");
+                        //     projectName.value="";
+                        //     dateFromProject.value="";
+                        //     dateToProject.value="";
+                        //     descrProject[0].value="";
+                        //     // console.log("hello");
+                        //     for (let i = 1; i < first_desc.length; ) 
+                        //     {
+                        //         // console.log(descrProject[i].className);
+                                
+                        //         first_desc[i].remove();
+                        //     }
+                        //     for(let i=0;i<projectList.length;i++)
+                        //     {
+                        //         // degree: degreeName.value,specialization:specializationEdu.value,college:collegeName.value,From:dateFromEdu.value,dateTo:dateToEdu.value,cgpa:courseCgpa.value,id:idi
+                        //         if(projectList[i].id===element_id)
+                        //         {
+                        //             projectName.value=projectList[i].name;
+                        //             dateFromProject.value=projectList[i].dateFrom;
+                        //             dateToProject.value=projectList[i].dateTo;
+                        //             // courseCgpa.value=educationList[i].cgpa;
+                                    
+                        //             let first_desc=document.getElementsByClassName("project-desc");
+                        //             // console.log(projectList[i][description[0]]);
+                        //             first_desc[0].value=projectList[i].description[0];
+                        //             // console.log(first_desc[0]);
+                        //             // first_desc[0].innerHTML.textContent=projectList[i].description[0];
+                        //             for(let j=1;j<projectList[i].description.length;j++)
+                        //             {
+                        //                 let parentDiv=document.getElementsByClassName("complete-project-desc");
+                        //                 console.log(parentDiv[0]);
+                        //                 let newDesc=document.createElement("textarea");
+                        //                 newDesc.value=projectList[i].description[j];
+                        //                 console.log(newDesc);
+                        //                 newDesc.classList.add("project-desc");
+                        //                 // newDesc.name="description";
+                        //                 newDesc.rows="3";
+                        //                 newDesc.cols="40";
+                        //                 console.log(newDesc);
+                        //                 parentDiv[0].appendChild(newDesc);
+                        //             }
+                        //             projectList.splice(i,1);
+                        //             console.log(projectList);
+                        //             // let project_element={name: projectName.value,dateFrom:dateFromProject.value,dateTo:dateToProject.value,description:[],id:idi};
+                        //             break;
+                        //         }
+                        //     }
+                        // }
+                        
+                        
+                        
                         
                     }
                    
@@ -536,8 +576,7 @@ topic.addEventListener("change",()=>{
 
 
             
-
-            educationButton.addEventListener("click",()=>
+            let submitEducation=()=>
             {
                 
                 
@@ -595,7 +634,8 @@ topic.addEventListener("change",()=>{
                 dateFromEdu.value="";
                 dateToEdu.value="";
                 courseCgpa.value="";
-            })
+            }
+            educationButton.addEventListener("click",submitEducation);
 
 
             
