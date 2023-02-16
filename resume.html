@@ -1,23 +1,28 @@
 <!DOCTYPE html>
-<html lang='en'>
+<html lang="en">
   <head>
-    <meta charset='UTF-8'/>
-    
-    <title>RESUME</title>
-    <link rel="icon" type="image/x-icon" href="/images/resume-image.jpg">
+    <meta charset="UTF-8" />
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
-    <link href='styles.css' rel='stylesheet'/>
-   
+    <title>RESUME</title>
+    <link rel="icon" type="image/x-icon" href="/images/resume-image.jpg" />
+
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    />
+    <link href="styles.css" rel="stylesheet" />
   </head>
   <body>
-<div class="full-page">
-   <div class="form">
-      <form action="">
-        <label for="topic">Choose a topic to add</label>
-        <br>
-        <select name="topic" id="topic">
+    <div class="full-page">
+      <div class="form">
+        <form action="">
+          <label for="topic">Choose a topic to add</label>
+          <br />
+          <select name="topic" id="topic">
             <option value="None">Select</option>
             <option value="intro">Introduction</option>
             <option value="work-exp">Work-Experience</option>
@@ -26,243 +31,274 @@
             <option value="contact-info">Contact Information</option>
             <option value="project">Project</option>
             <option value="education">Education</option>
+            <option value="image">Image</option>
+          </select>
 
-        </select>
-        
+          <div class="intro-form sub-form">
+            <br />
+            <div>
+              <label for="name">Name</label>
+              <input type="text" id="name" />
+            </div>
+            <br />
+            <div>
+              <label for="role">Role</label>
+              <input type="text" id="role" />
+            </div>
+            <br />
+            <div>
+              <label for="desc">Description</label>
+              <textarea
+                id="desc"
+                name="description"
+                rows="4"
+                cols="40"
+              ></textarea>
+            </div>
+            <br />
+            <input type="button" value="submit" id="submit-intro" />
+          </div>
+          <div class="image-form sub-form">
+            <input type="file" id="profile-image" name="filename">
+            <!-- <input type="submit"> -->
+            <br />
+            <input type="button" value="submit" id="submit-image" />
+          </div>
+          
+          <div class="contact-info-form sub-form">
+            <br />
 
-        <div class="intro-form sub-form">
-            <br>
             <div>
-            <label for="name" >Name</label>
-            <input type="text" id="name">
+              <label for="linkedin">LinkedIN</label>
+              <input type="text" id="linkedin" />
             </div>
-            <br>
+            <br />
             <div>
-            <label for="role" >Role</label>
-            <input type="text" id="role">
+              <label for="mail">Email Id</label>
+              <input type="text" id="mail" />
             </div>
-            <br>
+            <br />
             <div>
-                <label for="desc" >Description</label>
-                <textarea id="desc" name="description" rows="4" cols="40"></textarea>
+              <label for="phone">Phone Number</label>
+              <input type="text" id="phone" />
             </div>
-            <br>
-            <input type="button" value="submit" id="submit-intro">
-        </div>
-        <div class="contact-info-form sub-form">
-            <br>
-            
+            <br />
             <div>
-            <label for="linkedin" >LinkedIN</label>
-            <input type="text" id="linkedin">
+              <label for="place">Location</label>
+              <input type="text" id="place" />
             </div>
-            <br>
+            <br />
             <div>
-            <label for="mail" >Email Id</label>
-            <input type="text" id="mail">
+              <label for="twitter">Twitter</label>
+              <input type="text" id="twitter" />
             </div>
-            <br>
-            <div>
-                <label for="phone" >Phone Number</label>
-                <input type="text" id="phone">
-            </div>
-            <br>
-            <div>
-                <label for="place" >Location</label>
-                <input type="text" id="place">
-            </div>
-            <br>
-            <div>
-                <label for="twitter" >Twitter</label>
-                <input type="text" id="twitter">
-            </div>
-            <br>
+            <br />
 
-            
-            <input type="button" value="submit" id="submit-contact-info">
-        </div>
-        <div class="skills-form sub-form">
-            <br>
+            <input type="button" value="submit" id="submit-contact-info" />
+          </div>
+          <div class="skills-form sub-form">
+            <br />
             <div>
-            <label for="skill-name" >Skill-Name</label>
-            <input type="text" id="skill-name">
+              <label for="skill-name">Skill-Name</label>
+              <input type="text" id="skill-name" />
             </div>
-            <br>
+            <br />
             <div>
-            <label for="skill-percentage" >Percentage</label>
-            <input type="text" id="skill-percentage">
+              <label for="skill-percentage">Percentage</label>
+              <input type="text" id="skill-percentage" />
             </div>
-            <br>
-            
-            <input type="button" value="submit" id="submit-skills">
-        </div>
-        <div class="languages-form sub-form">
-            <br>
+            <br />
+
+            <input type="button" value="submit" id="submit-skills" />
+          </div>
+          <div class="languages-form sub-form">
+            <br />
             <div>
-            <label for="languages-name" >Language Name</label>
-            <input type="text" id="languages-name">
+              <label for="languages-name">Language Name</label>
+              <input type="text" id="languages-name" />
             </div>
-            <br>
+            <br />
             <div>
-            <label for="languages-rating" >Rating(out of 5)</label>
-            <input type="text" id="languages-rating">
+              <label for="languages-rating">Rating(out of 5)</label>
+              <input type="text" id="languages-rating" />
             </div>
-            <br>
-            
-            <input type="button" value="submit" id="submit-languages">
-        </div>
-        <div class="project-form sub-form">
-            
-            <br>
+            <br />
+
+            <input type="button" value="submit" id="submit-languages" />
+          </div>
+          <div class="project-form sub-form">
+            <br />
             <div>
-            <label for="project-name" >Project Title</label>
-            <input type="text" id="project-name">
+              <label for="project-name">Project Title</label>
+              <input type="text" id="project-name" />
             </div>
-            
-            <br>
+
+            <br />
             <div>
-                <label for="date-from" >Date form (mm/yyyy)</label>
-                <input type="month" id="date-from-project">
+              <label for="date-from">Date form (mm/yyyy)</label>
+              <input type="month" id="date-from-project" />
             </div>
-            <br>
+            <br />
             <div>
-                <label for="date-to" >Date to (mm/yyyy)</label>
-                <input type="month" id="date-to-project">
+              <label for="date-to">Date to (mm/yyyy)</label>
+              <input type="month" id="date-to-project" />
             </div>
-            <br>
+            <br />
             <div class="complete-project-desc">
-                <label for="project-desc" >Description(Enter pointwise)</label>
-                <textarea class="project-desc" name="description-project" rows="3" cols="40"></textarea>
+              <label for="project-desc">Description(Enter pointwise)</label>
+              <textarea
+                class="project-desc"
+                name="description-project"
+                rows="3"
+                cols="40"
+              ></textarea>
             </div>
-            <br>
+            <br />
             <!-- <button id='add-desc'>+</button> -->
-            <input type="button" value="+" id="add-project-desc">
-            <input type="button" value="submit" id="submit-project">
-        </div>
-        <div class="education-form sub-form">
+            <input type="button" value="+" id="add-project-desc" />
+            <br>
+            <!-- <input type="button" value="submit" id="submit-education" /> -->
+            <input type="button" value="submit" id="submit-project" />
+            <input type="button" value="confirm" id="confirm-project" />
+            <br />
+            <input type="button" value="cancel" id="cancel-project" />
             
-            <br>
+          </div>
+          <div class="education-form sub-form">
+            <br />
             <div>
-            <label for="degree-name" >Degree</label>
-            <input type="text" id="degree-name">
+              <label for="degree-name">Degree</label>
+              <input type="text" id="degree-name" />
             </div>
-            
-            <br>
-            <div>
-                <label for="specialization" >Specialization</label>
-                <input type="text" id="specialization">
-            </div>
-            <br>
-            <div>
-                <label for="college-name" >Institute Name</label>
-                <input type="text" id="college-name">
-            </div>
-            <br>
-            <div>
-                <label for="date-from-edu" >Date from (mm/yyyy)</label>
-                <input type="month" id="date-from-edu">
-            </div>
-            <br>
-            <div>
-                <label for="date-to-edu" >Date to (mm/yyyy)</label>
-                <input type="month" id="date-to-edu">
-            </div>
-            <br>
-            <div>
-                <label for="cgpa" >CGPA</label>
-                <input type="text" id="cgpa">
-            </div>
-            <br>
-            
-            
-            <input type="button" value="submit" id="submit-education">
-            <input type="button" value="confirm" id="confirm-education">
-            <br>
-            <input type="button" value="cancel" id="cancel-education">
-            <br>
-           
-        </div>
-        <div class="work-exp-form sub-form">
-            <br>
-            <div>
-            <label for="role-name" >Role</label>
-            <input type="text" id="role-name">
-            </div>
-            <br>
-            <div>
-            <label for="company-name" >Company Name</label>
-            <input type="text" id="company-name">
-            </div>
-            <br>
-            <div>
-                <label for="work-location" >Location</label>
-                <input type="text" id="work-location">
-            </div>
-            <br>
-            <div>
-                <label for="date-from" >Date form (mm/yyyy)</label>
-                <input type="month" id="date-from">
-            </div>
-            <br>
-            <div>
-                <label for="date-to" >Date to (mm/yyyy)</label>
-                <input type="month" id="date-to">
-            </div>
-            <br>
-            <div class="complete-desc">
-                <label for="work-exp-desc" >Description(Enter pointwise)</label>
-                <textarea class="work-exp-desc" name="description" rows="3" cols="40"></textarea>
-            </div>
-            <br>
-            <!-- <button id='add-desc'>+</button> -->
-            <input type="button" value="+" id="add-desc">
-            <input type="button" value="submit" id="submit-work-exp">
-        </div>
-        <br>
 
-      </form>
-      <!-- <div></div> -->
-   </div>
-   
-   <div class="layout">
-    <div class="left">
-            <div class="profile-image">
-                <img src='images/picture.jpg' />
+            <br />
+            <div>
+              <label for="specialization">Specialization</label>
+              <input type="text" id="specialization" />
             </div>
-            <div class="introduction">
-                <h1 id="nameHeading">SHREYANSH JAIN</h1>
-                <h4>Software Engineer Role</h4>
-                <hr>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde atque consequatur fuga quaerat iste sapiente laudantium, impedit commodi. 
-                    Incidunt, dolore fuga totam ad doloribus perspiciatis atque cupiditate voluptatibus amet voluptatum.Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                    Unde atque consequatur fuga quaerat iste sapiente laudantium, impedit commodi. Incidunt, dolore fuga totam ad doloribus perspiciatis atque
-                    cupiditate voluptatibus amet voluptatum.</p>
+            <br />
+            <div>
+              <label for="college-name">Institute Name</label>
+              <input type="text" id="college-name" />
             </div>
-            <div class="links">
-                <div class="link-icon">
-                <!-- <div class="align-icon"><i class="fa-brands fa-linkedin icons"></i></div>
+            <br />
+            <div>
+              <label for="date-from-edu">Date from (mm/yyyy)</label>
+              <input type="month" id="date-from-edu" />
+            </div>
+            <br />
+            <div>
+              <label for="date-to-edu">Date to (mm/yyyy)</label>
+              <input type="month" id="date-to-edu" />
+            </div>
+            <br />
+            <div>
+              <label for="cgpa">CGPA</label>
+              <input type="text" id="cgpa" />
+            </div>
+            <br />
+
+            <input type="button" value="submit" id="submit-education" />
+            <input type="button" value="confirm" id="confirm-education" />
+            <br />
+            <input type="button" value="cancel" id="cancel-education" />
+            <br />
+          </div>
+          <div class="work-exp-form sub-form">
+            <br />
+            <div>
+              <label for="role-name">Role</label>
+              <input type="text" id="role-name" />
+            </div>
+            <br />
+            <div>
+              <label for="company-name">Company Name</label>
+              <input type="text" id="company-name" />
+            </div>
+            <br />
+            <div>
+              <label for="work-location">Location</label>
+              <input type="text" id="work-location" />
+            </div>
+            <br />
+            <div>
+              <label for="date-from">Date form (mm/yyyy)</label>
+              <input type="month" id="date-from" />
+            </div>
+            <br />
+            <div>
+              <label for="date-to">Date to (mm/yyyy)</label>
+              <input type="month" id="date-to" />
+            </div>
+            <br />
+            <div class="complete-desc">
+              <label for="work-exp-desc">Description(Enter pointwise)</label>
+              <textarea
+                class="work-exp-desc"
+                name="description"
+                rows="3"
+                cols="40"
+              ></textarea>
+            </div>
+            <br />
+            <!-- <button id='add-desc'>+</button> -->
+            <input type="button" value="+" id="add-desc" />
+            <br>
+            <input type="button" value="submit" id="submit-workexp" />
+            <input type="button" value="confirm" id="confirm-workexp" />
+            <br />
+            <input type="button" value="cancel" id="cancel-workexp" />
+          </div>
+          <br />
+        </form>
+        <!-- <div></div> -->
+      </div>
+
+      <div class="layout">
+        <div class="left">
+          <div class="profile-image">
+            <img src="images/picture.jpg" />
+          </div>
+          <div class="introduction">
+            <h1 id="nameHeading">SHREYANSH JAIN</h1>
+            <h4>Software Engineer Role</h4>
+            <hr />
+            <p>
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde
+              atque consequatur fuga quaerat iste sapiente laudantium, impedit
+              commodi. Incidunt, dolore fuga totam ad doloribus perspiciatis
+              atque cupiditate voluptatibus amet voluptatum.Lorem ipsum dolor
+              sit amet consectetur, adipisicing elit. Unde atque consequatur
+              fuga quaerat iste sapiente laudantium, impedit commodi. Incidunt,
+              dolore fuga totam ad doloribus perspiciatis atque cupiditate
+              voluptatibus amet voluptatum.
+            </p>
+          </div>
+          <div class="links">
+            <div class="link-icon">
+              <!-- <div class="align-icon"><i class="fa-brands fa-linkedin icons"></i></div>
                 <div class="icon-text"><a href="https://linkedin.com/in/shreyansh-jain-695320192/" target="_blank" class="iconic">linkedin/shreyanshjain</a></div> -->
-                </div>
-                <div class="link-icon">
-                <!-- <div class="align-icon"><i class="fa-solid fa-envelope icons"></i></div>
-                <div class="icon-text"><a href="mailto: s2108j@gmail.com" target="_blank" class="iconic">s2108j@gmail.com</a></div> -->
-                </div>
-                <div class="link-icon">
-                <!-- <div class="align-icon"><i class="fa-solid fa-mobile icons"></i></div>
-                <div class="icon-text" ><a href="tel:+9638749427" target="_blank" class="iconic">9638749427</a></div> -->
-                </div>
-                <div class="link-icon">
-                <!-- <div class="align-icon"><i class="fa-solid fa-location-dot icons"></i></div>
-                <div class="icon-text"><a href="https://goo.gl/maps/UQarQysp7au5hPoXA" target="_blank" class="iconic">Ahmedabad</a></div> -->
-                </div>
-                <div class="link-icon">
-                <!-- <div class="align-icon"><i class="fa-brands fa-square-twitter icons"></i></div>
-                <div class="icon-text"><a href="https://twitter.com/shreyansh_2108" target="_blank" class="iconic">shreyansh_2108</a></div> -->
-                </div>
             </div>
-            <div id="add-skills">
-                <h2>SKILLS</h2>
-                <!-- <div class="skills">
+            <div class="link-icon">
+              <!-- <div class="align-icon"><i class="fa-solid fa-envelope icons"></i></div>
+                <div class="icon-text"><a href="mailto: s2108j@gmail.com" target="_blank" class="iconic">s2108j@gmail.com</a></div> -->
+            </div>
+            <div class="link-icon">
+              <!-- <div class="align-icon"><i class="fa-solid fa-mobile icons"></i></div>
+                <div class="icon-text" ><a href="tel:+9638749427" target="_blank" class="iconic">9638749427</a></div> -->
+            </div>
+            <div class="link-icon">
+              <!-- <div class="align-icon"><i class="fa-solid fa-location-dot icons"></i></div>
+                <div class="icon-text"><a href="https://goo.gl/maps/UQarQysp7au5hPoXA" target="_blank" class="iconic">Ahmedabad</a></div> -->
+            </div>
+            <div class="link-icon">
+              <!-- <div class="align-icon"><i class="fa-brands fa-square-twitter icons"></i></div>
+                <div class="icon-text"><a href="https://twitter.com/shreyansh_2108" target="_blank" class="iconic">shreyansh_2108</a></div> -->
+            </div>
+          </div>
+          <div id="add-skills">
+            <h2>SKILLS</h2>
+            <!-- <div class="skills">
                     
                     <div class="border-element">
                         <div class="inside-skills-container C">
@@ -291,10 +327,10 @@
                     </div>
                     
                 </div> -->
-            </div>
-            <div class="languages">
-                <h2>LANGUAGES</h2>
-                <!-- <div class="inside-languages-container">
+          </div>
+          <div class="languages">
+            <h2>LANGUAGES</h2>
+            <!-- <div class="inside-languages-container">
                     <h4>English</h4>
                     <div class="place-circles">
                         <div><i class="fa-solid fa-circle rating"></i></div>
@@ -330,20 +366,25 @@
                     
                     
                 </div> -->
-                
-            </div>
-    </div>
-    <div class="right">
-        <div class="intro">
+          </div>
+        </div>
+        <div class="right">
+          <div class="intro">
             <h1>SHREYANSH JAIN</h1>
             <h4>Software Engineer Role</h4>
-            <hr>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde atque consequatur fuga quaerat iste sapiente laudantium, impedit commodi. 
-                Incidunt, dolore fuga totam ad doloribus perspiciatis atque cupiditate voluptatibus amet voluptatum.Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                Unde atque consequatur fuga quaerat iste sapiente laudantium, impedit commodi. Incidunt, dolore fuga totam ad doloribus perspiciatis atque
-                cupiditate voluptatibus amet voluptatum.</p>
-        </div>
-        <div class="content-container">
+            <hr />
+            <p>
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde
+              atque consequatur fuga quaerat iste sapiente laudantium, impedit
+              commodi. Incidunt, dolore fuga totam ad doloribus perspiciatis
+              atque cupiditate voluptatibus amet voluptatum.Lorem ipsum dolor
+              sit amet consectetur, adipisicing elit. Unde atque consequatur
+              fuga quaerat iste sapiente laudantium, impedit commodi. Incidunt,
+              dolore fuga totam ad doloribus perspiciatis atque cupiditate
+              voluptatibus amet voluptatum.
+            </p>
+          </div>
+          <div class="content-container">
             <h2>WORK EXPERIENCE</h2>
             <div class="work-exp-container"></div>
             <!-- <h4>Product Engineer Intern</h4>
@@ -382,9 +423,8 @@
                    
                 </ul>
             </div> -->
-        
-        </div>
-        <div class="content-container">
+          </div>
+          <div class="content-container">
             <h2>PROJECTS</h2>
             <div class="project-container"></div>
             <!-- <h4 class="project">Football League</h4>
@@ -414,10 +454,8 @@
                         league.</li>
                 </ul>
             </div> -->
-        
-            
-        </div>
-        <div class="education">
+          </div>
+          <div class="education">
             <h2>EDUCATION</h2>
             <div class="education-container"></div>
             <!-- <h4 class="degree">B.Tech in Computer Science </h4>
@@ -433,14 +471,11 @@
                 <div class="date">08/2019 - 08/2023</div>
                 <div class="place">CGPA - 7.17</div>
             </div> -->
+          </div>
         </div>
-        
-
+      </div>
     </div>
-   </div>
-   
-</div>
-  <!--ul li::before 
+    <!--ul li::before 
 {
     content: "\2022";  /* Add content: \2022 is the CSS Code/unicode for a bullet */
     color:  rgb(31, 176, 128);; /* Change the color */
@@ -449,9 +484,6 @@
     width: 1em; /* Also needed for space (tweak if needed) */
     margin-left: -1em; /* Also needed for space (tweak if needed) */
 }-->
-<script src="index.js"></script>
+    <script src="index.js"></script>
   </body>
 </html>
-
-
-

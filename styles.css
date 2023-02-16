@@ -114,7 +114,7 @@ h2
     height: 28px;
     /* align-items: center; */
 }
-#cancel-education,#confirm-education
+#cancel-education,#confirm-education,#confirm-project,#cancel-project,#cancel-workexp,#confirm-workexp
 {
     display: none;
 }
