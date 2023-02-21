@@ -25,7 +25,7 @@
           <select name="topic" id="topic">
             <option value="None">Select</option>
             <option value="intro">Introduction</option>
-            <option value="work-exp">Work-Experience</option>
+            <option value="workexp">Work-Experience</option>
             <option value="skills">Skills</option>
             <option value="languages">Languages</option>
             <option value="contact-info">Contact Information</option>
@@ -158,10 +158,10 @@
             <input type="button" value="+" id="add-project-desc" />
             <br>
             <!-- <input type="button" value="submit" id="submit-education" /> -->
-            <input type="button" value="submit" id="submit-project" />
-            <input type="button" value="confirm" id="confirm-project" />
+            <input type="button" value="submit" id="submit-project" class="submit-button" />
+            <input type="button" value="confirm" id="confirm-project" class="confirm-button" onclick="" />
             <br />
-            <input type="button" value="cancel" id="cancel-project" />
+            <input type="button" value="cancel" id="cancel-project" class="cancel-button" />
             
           </div>
           <div class="education-form sub-form">
@@ -204,7 +204,7 @@
             <input type="button" value="cancel" id="cancel-education" />
             <br />
           </div>
-          <div class="work-exp-form sub-form">
+          <div class="workexp-form sub-form">
             <br />
             <div>
               <label for="role-name">Role</label>
@@ -232,9 +232,9 @@
             </div>
             <br />
             <div class="complete-desc">
-              <label for="work-exp-desc">Description(Enter pointwise)</label>
+              <label for="workexp-desc">Description(Enter pointwise)</label>
               <textarea
-                class="work-exp-desc"
+                class="workexp-desc"
                 name="description"
                 rows="3"
                 cols="40"
@@ -296,7 +296,7 @@
                 <div class="icon-text"><a href="https://twitter.com/shreyansh_2108" target="_blank" class="iconic">shreyansh_2108</a></div> -->
             </div>
           </div>
-          <div id="add-skills">
+          <div id="add-skills" class="skills-container">
             <h2>SKILLS</h2>
             <!-- <div class="skills">
                     
@@ -328,7 +328,7 @@
                     
                 </div> -->
           </div>
-          <div class="languages">
+          <div class="languages-container">
             <h2>LANGUAGES</h2>
             <!-- <div class="inside-languages-container">
                     <h4>English</h4>
@@ -386,7 +386,7 @@
           </div>
           <div class="content-container">
             <h2>WORK EXPERIENCE</h2>
-            <div class="work-exp-container"></div>
+            <div class="workexp-container"></div>
             <!-- <h4>Product Engineer Intern</h4>
             <h4 id="company-name">Deloitte</h4>
             <div class="date-place">
@@ -474,6 +474,13 @@
           </div>
         </div>
       </div>
+      
+    </div>
+    <div class="preview">
+        <input type="button" value="Preview" id="preview-resume" />
+    </div>
+    <div class="back-to-form">
+        <input type="button" value="Go Back to forms" id="go-back" />
     </div>
     <!--ul li::before 
 {
