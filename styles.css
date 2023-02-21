@@ -1,5 +1,9 @@
-html {
+*
+{
     box-sizing: border-box;
+}
+html {
+    
     font-size: 1vh;
 }
 .full-page {
@@ -161,10 +165,12 @@ h4 {
 }
 .rating {
     color: rgb(31, 176, 128);
+    font-size: 2rem;
 }
 
 .unrate {
     color: rgb(31, 176, 128);
+    font-size: 2rem;
 }
 
 .intro {
@@ -347,12 +353,12 @@ a.iconic {
     margin-bottom: 10px;
 }
 
-@media only screen and (max-width: 1150px) {
+@media only screen and (max-width: 800px) {
     .layout {
-        width: 100%;
+        width: 100% !important;
     }
 }
-@media only screen and (max-width: 630px) {
+@media only screen and (max-width: 500px) {
     .layout {
         display: flex;
         width: 100%;

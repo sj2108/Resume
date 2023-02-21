@@ -1,5 +1,9 @@
 let topic = document.getElementById("topic");
 
+// let completeInformation={
+//     educationList,projectList,educationList,workExpList,skillList,languageList
+// }
+
 let educationList = [];
 let degreeName = document.getElementById("degree-name");
 let specializationEdu = document.getElementById("specialization");
@@ -20,7 +24,7 @@ let projectButton = document.getElementById("submit-project");
 
 
 let workExpList = [];
-let addDescButton = document.getElementById("add-desc");
+let addWorkExpDescButton = document.getElementById("add-desc");
 let roleName = document.getElementById("role-name");
 let companyName = document.getElementById("company-name");
 let workLocation = document.getElementById("work-location");
@@ -619,9 +623,9 @@ function reinitializeProject() {
     }
 }
 
-addDescButton.addEventListener("click", () => {
+
+addWorkExpDesc = () => {
     let parentDiv = document.getElementsByClassName("complete-desc");
-    console.log(parentDiv[0]);
     let newDesc = document.createElement("textarea");
     console.log(newDesc);
     newDesc.classList.add("workexp-desc");
@@ -630,20 +634,21 @@ addDescButton.addEventListener("click", () => {
     newDesc.cols = "40";
     console.log(newDesc);
     parentDiv[0].appendChild(newDesc);
-});
+};
+addWorkExpDescButton.addEventListener("click", addWorkExpDesc);
 
-addProjectDescButton.addEventListener("click", () => {
+
+addProjectDesc=() => {
     let parentDiv = document.getElementsByClassName("complete-project-desc");
-    console.log(parentDiv[0]);
     let newDesc = document.createElement("textarea");
     console.log(newDesc);
     newDesc.classList.add("project-desc");
-    // newDesc.name="description";
     newDesc.rows = "3";
     newDesc.cols = "40";
     console.log(newDesc);
     parentDiv[0].appendChild(newDesc);
-});
+};
+addProjectDescButton.addEventListener("click", addProjectDesc); 
 
 
 submitWorkExp = () => {
