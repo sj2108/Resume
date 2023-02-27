@@ -1,51 +1,26 @@
+import * as skills from "./skills.js";
+import * as intro from "./introduction.js";
+import * as languages from "./languages.js";
+import * as project from "./project.js";
+import * as workexp from "./workexp.js"
+import * as education from "./education.js";
+import * as image from "./image.js";
+import * as contact from "./contactinfo.js";
+
 let topic = document.getElementById("topic");
-const TOPIC = {
+export const TOPIC = {
     PROJECT: "project",
     EDUCATION: "education",
     WORKEXP: "workexp",
     SKILL: "skills",
     LANGUAGE: "languages",
 };
-let submitImage = document.getElementById("submit-image");
-let profileImage = document.getElementsByTagName("img")[0];
-let newProfileImage = document.getElementById("profile-image");
 
-let educationList = [];
-let degreeName = document.getElementById("degree-name");
-let specializationEdu = document.getElementById("specialization");
-let collegeName = document.getElementById("college-name");
-let dateFromEdu = document.getElementById("date-from-edu");
-let dateToEdu = document.getElementById("date-to-edu");
-let courseCgpa = document.getElementById("cgpa");
-let educationButton = document.getElementById("submit-education");
 
-let projectList = [];
-let addProjectDescButton = document.getElementById("add-project-desc");
-let projectName = document.getElementById("project-name");
-let dateFromProject = document.getElementById("date-from-project");
-let dateToProject = document.getElementById("date-to-project");
-let descrProject = document.getElementsByClassName("project-desc");
-let projectButton = document.getElementById("submit-project");
-
-let workExpList = [];
-let addWorkExpDescButton = document.getElementById("add-desc");
-let roleName = document.getElementById("role-name");
-let companyName = document.getElementById("company-name");
-let workLocation = document.getElementById("work-location");
-let dateFrom = document.getElementById("date-from");
-let dateTo = document.getElementById("date-to");
-let descr = document.getElementsByClassName("workexp-desc");
-let workExpButton = document.getElementById("submit-workexp");
-
-let skillList = [];
-let skillName = document.getElementById("skill-name");
-let skillPercentage = document.getElementById("skill-percentage");
-let buttonSkills = document.getElementById("submit-skills");
-
-let languageList = [];
-let languageName = document.getElementById("languages-name");
-let languageRating = document.getElementById("languages-rating");
-let buttonLanguage = document.getElementById("submit-languages");
+// let completEducationData = JSON.parse(localStorage.getItem("educationList"));
+// let educationList=[];
+// console.log(completEducationData);
+// console.log(typeof(educationList));
 
 let cancelProjectButton = document.getElementById("cancel-project");
 let confirmProjectButton = document.getElementById("confirm-project");
@@ -61,27 +36,35 @@ let eduIndex = -1;
 let workexpIndex = -1;
 let parent_Div = "";
 
-let introList = [];
-let name = document.getElementById("name");
-let role = document.getElementById("role");
-let description = document.getElementById("desc");
-let buttonIntro = document.getElementById("submit-intro");
-
-let contactList = [];
-let linkedinLink = document.getElementById("linkedin");
-let mailLink = document.getElementById("mail");
-let phoneLink = document.getElementById("phone");
-let placeLink = document.getElementById("place");
-let twitterLink = document.getElementById("twitter");
-let nameLink = document.getElementById("nameHeading");
-let buttonLink = document.getElementById("submit-contact-info");
-
 let previewButton = document.getElementById("preview-resume");
 
 let lastTopicValue = "None";
 
+// for (const element in completEducationData){
+//     console.log(completEducationData.dateFrom)
+//     let dates = setDate(
+//         completEducationData[element].dateFrom,
+//         completEducationData[element].dateTo
+//     );
+//     let insideHTML = getEducationData(completEducationData[element], dates);
+//     let rightID = "right-" + completEducationData[element].id;
+//     let leftID = "left-" + completEducationData[element].id;
+//     createNewElementRight(
+//         TOPIC.EDUCATION,
+//         rightID,
+//         insideHTML,
+//         completEducationData[element]
+//     );
+//     createNewElementLeft(
+//         TOPIC.EDUCATION,
+//         leftID,
+//         completeEducationData[element].degree
+//     );
+    
+// };
 
-previewButtonChanges = ({formDisplay,resumeWidth,resumeMargin,}) => {
+
+let previewButtonChanges = ({formDisplay,resumeWidth,resumeMargin,}) => {
     let hideForm = document.getElementsByClassName("form");
     let previewResume = document.getElementsByClassName("layout");
     hideForm[0].style.display = formDisplay;
@@ -123,7 +106,7 @@ topic.addEventListener("change", () => {
     lastTopicValue = topic.value;
 });
 
-function changeButtons(showSubmitButton, topic) {
+export function changeButtons(showSubmitButton, topic) {
     let confirmButton = document.getElementById("confirm-" + topic);
     let cancelButton = document.getElementById("cancel-" + topic);
     let submitButton = document.getElementById("submit-" + topic);
@@ -137,56 +120,35 @@ function changeButtons(showSubmitButton, topic) {
         submitButton.style.display = "none";
     }
 }
-getElementIDRight=(elementId)=> {
+export let getElementIDRight=(elementId)=> {
     let elementId1 = elementId.split("-")[1];
     let elementId2 = elementId.split("-")[2];
     return "right-" + elementId1 + "-" + elementId2;
 }
 confirmProjectButton.addEventListener("click", () => {
-    projectList.splice(projectIndex, 1);
-    let elementId = parent_Div.getAttribute("id");
-    parent_Div.remove();
-    let elementIdRight = getElementIDRight(elementId);
-    let elementRemove = document.getElementById(elementIdRight);
-    elementRemove.remove();
-    submitProject();
-    changeButtons(true, TOPIC.PROJECT);
+    project.confirmProject(parent_Div,projectIndex);
+    
 });
 confirmWorkexpButton.addEventListener("click", () => {
-    workExpList.splice(projectIndex, 1);
-    let elementId = parent_Div.getAttribute("id");
-    parent_Div.remove();
-    let elementIdRight = getElementIDRight(elementId);
-    let elementRemove = document.getElementById(elementIdRight);
-    elementRemove.remove();
-    submitWorkExp();
-    changeButtons(true, TOPIC.WORKEXP);
+    workexp.confirmWorkexp(parent_Div,workexpIndex);
 });
 
 confirmEducationButton.addEventListener("click", () => {
-    educationList.splice(eduIndex, 1);
-    let elementId = parent_Div.getAttribute("id");
-    parent_Div.remove();
-    let elementIdRight = getElementIDRight(elementId);
-    let elementRemove = document.getElementById(elementIdRight);
-    elementRemove.remove();
-    submitEducation();
-    changeButtons(true, TOPIC.EDUCATION);
+    education.confirmEducation(parent_Div,eduIndex);
 });
 cancelProjectButton.addEventListener("click", () => {
-    changeButtons(true, TOPIC.PROJECT);
-    reinitializeProject();
+    project.cancelProject();
 });
 cancelEducationButton.addEventListener("click", () => {
-    changeButtons(true, TOPIC.EDUCATION);
-    reinitializeEducation();
+    education.cancelEducation();
+   
 });
 
 cancelWorkexpButton.addEventListener("click", () => {
-    changeButtons(true, TOPIC.WORKEXP);
-    reinitializeWorkexp();
+    workexp.cancelWorkexp();
+    
 });
-let addDescription = (description, topicName,parentDiv) => {
+export let addDescription = (description, topicName,parentDiv) => {
     let newDesc = document.createElement("textarea");
     newDesc.value = description;
     console.log(newDesc);
@@ -196,64 +158,25 @@ let addDescription = (description, topicName,parentDiv) => {
     console.log(newDesc);
     parentDiv.appendChild(newDesc);
 };
-reassignProjectForEdit = (projectArray) => {
-    projectName.value = projectArray.name;
-    dateFromProject.value = projectArray.dateFrom;
-    dateToProject.value = projectArray.dateTo;
-    let firstDesc = document.getElementsByClassName("project-desc");
-    firstDesc[0].value = projectArray.description[0];
-    for (let j = 1; j < projectArray.description.length; j++) 
-    {
-        let parentDiv = document.getElementsByClassName("complete-project-desc");
-        console.log(parentDiv[0]);
-        addDescription(projectArray.description[j],TOPIC.PROJECT,parentDiv[0]) 
-    }
-};
-
-reassignWorkExpForEdit = (workExpArray) => {
-    roleName.value = workExpArray.role;
-    companyName.value = workExpArray.company;
-    workLocation.value = workExpArray.location;
-    dateFrom.value = workExpArray.dateFrom;
-    dateTo.value = workExpArray.dateTo;
-    let first_desc = document.getElementsByClassName("workexp-desc");
-    first_desc[0].value = workExpArray.description[0];
-    for (let j = 1; j < workExpArray.description.length; j++) 
-    {
-        let parentDiv = document.getElementsByClassName("complete-desc");
-        console.log(parentDiv[0]);
-        addDescription(workExpArray.description[j], TOPIC.WORKEXP,parentDiv[0]);    
-    }
-
-};
 
 
-removeElementFromArray = (topicName) => {
+
+
+
+let removeElementFromArray = (topicName,elementArrayId) => {
     if (topicName === TOPIC.LANGUAGE) {
-        languageList = languageList.filter((l) => l.id != elementArrayId);
-        console.log(languageList);
+        languages.deleteLanguage(elementArrayId);
     } else if (topicName === TOPIC.SKILL) {
-        skillList = skillList.filter((l) => l.id != elementArrayId);
-        console.log(skillList);
+        skills.deleteSkill(elementArrayId);
     } else if (topicName === TOPIC.WORKEXP) {
-        workExpList = workExpList.filter((l) => l.id != elementArrayId);
-        console.log(workExpList);
+        workexp.deleteWorkexp(elementArrayId);
     } else if (topicName === TOPIC.PROJECT) {
-        projectList = projectList.filter((l) => l.id != elementArrayId);
-        console.log(projectList);
+        project.deleteProject(elementArrayId)
     } else if (topicName === TOPIC.EDUCATION) {
-        educationList = educationList.filter((l) => l.id != elementArrayId);
-        console.log(educationList);
+        education.deleteEducation(elementArrayId);
     }
 };
-reassignEducationForEdit = (educationArray)=>{
-    degreeName.value = educationArray.degree;
-    specializationEdu.value = educationArray.specialization;
-    collegeName.value = educationArray.college;
-    dateFromEdu.value = educationArray.dateFrom;
-    dateToEdu.value = educationArray.dateTo;
-    courseCgpa.value = educationArray.cgpa;
-}
+
 let parentDiv = document.getElementsByClassName("form");
 parentDiv[0].addEventListener("click", (e) => {
     if (e.target.nodeName === "BUTTON") {
@@ -270,48 +193,51 @@ parentDiv[0].addEventListener("click", (e) => {
 
             if (element_id2 === TOPIC.EDUCATION) {
                 e.preventDefault();
-                for (let i = 0; i < educationList.length; i++) {
-                    if (educationList[i].id === element_id) {
+                for (let i = 0; i < education.educationList.length; i++) {
+                    if (education.educationList[i].id === element_id) {
                         eduIndex = i;
-                        reassignEducationForEdit(educationList[i]);
+                        education.reassignEducationForEdit(
+                            education.educationList[i]
+                        );
                         break;
                     }
                 }
             } else if (element_id2 === TOPIC.PROJECT) {
                 e.preventDefault();
-                reinitializeProject();
-                for (let i = 0; i < projectList.length; i++) {
-                    if (projectList[i].id === element_id) {
+                project.reinitializeProject();
+                for (let i = 0; i < project.projectList.length; i++) {
+                    if (project.projectList[i].id === element_id) {
                         projectIndex = i;
-                        reassignProjectForEdit(projectList[i]);
+                        project.reassignProjectForEdit(project.projectList[i]);
                         break;
                     }
                 }
             } else if (element_id2 === TOPIC.WORKEXP) {
                 e.preventDefault();
-                reinitializeWorkexp();
+                workexp.reinitializeWorkexp();
                 // let workexpIndex = -1;
-                for (let i = 0; i < workExpList.length; i++) {
-                    if (workExpList[i].id === element_id) {
+                for (let i = 0; i < workexp.workExpList.length; i++) {
+                    if (workexp.workExpList[i].id === element_id) {
                         workexpIndex = i;
-                        reassignWorkExpForEdit(workExpList[i]);
+                        workexp.reassignWorkExpForEdit(workexp.workExpList[i]);
                         break;
                     }
                 }
             }
         } else if (e.target.textContent === "X") {
+            e.preventDefault;
             let parent = e.target.parentNode.parentNode;
-            element_id = parent.getAttribute("id");
-            element_id1 = element_id.split("-")[1];
-            topicName = element_id.split("-")[2];
+            let element_id = parent.getAttribute("id");
+            let element_id1 = element_id.split("-")[1];
+            let topicName = element_id.split("-")[2];
             console.log(element_id);
             element_id = "right-" + element_id1 + "-" + topicName;
-            elementArrayId = element_id1 + "-" + topicName;
+            let elementArrayId = element_id1 + "-" + topicName;
             parent.remove();
             let element_remove = document.getElementById(element_id);
             console.log(element_id);
             element_remove.remove();
-            removeElementFromArray(topicName);
+            removeElementFromArray(topicName,elementArrayId);
             
         }
     }
@@ -319,7 +245,7 @@ parentDiv[0].addEventListener("click", (e) => {
 
 
 // Add in right section of the page
-function createNewElementRight(topicName, rightID, insideHTML, element_data) {
+export function createNewElementRight(topicName, rightID, insideHTML, element_data) {
     let parentDiv = document.getElementsByClassName(topicName + "-container");
     let newDiv = document.createElement("div");
 
@@ -348,12 +274,12 @@ function createNewElementRight(topicName, rightID, insideHTML, element_data) {
         for (let i = 0; i < element_data.rating; i++) {
             let newDiv = document.createElement("div");
             newDiv.innerHTML = "<i class='fa-solid fa-circle rating'></i>";
-            insideNewDiv[languageList.length - 1].appendChild(newDiv);
+            insideNewDiv[(languages.languageList.length) - 1].appendChild(newDiv);
         }
         for (let i = 0; i < 5 - element_data.rating; i++) {
             let newDiv = document.createElement("div");
             newDiv.innerHTML = "<i class='fa-regular fa-circle unrate'></i>";
-            insideNewDiv[languageList.length - 1].appendChild(newDiv);
+            insideNewDiv[(languages.languageList.length) - 1].appendChild(newDiv);
         }
     } else if (topicName === TOPIC.SKILL) {
         newDiv.className = TOPIC.SKILL;
@@ -361,7 +287,7 @@ function createNewElementRight(topicName, rightID, insideHTML, element_data) {
         let insideNewDiv = document.querySelectorAll(
             ".inside-skills-container"
         );
-        insideNewDiv[skillList.length - 1].style.width =
+        insideNewDiv[(skills.skillList.length) - 1].style.width =
             "" + element_data.percentage + "%";
     } else {
         newDiv.id = rightID;
@@ -370,7 +296,7 @@ function createNewElementRight(topicName, rightID, insideHTML, element_data) {
 }
 
 // Add in left section of the page
-function createNewElementLeft(topicName, leftID, value) {
+export function createNewElementLeft(topicName, leftID, value) {
     let parent_Div = document.querySelector("." + topicName + "-" + "form");
     let nextDiv = document.createElement("div");
     nextDiv.class = "subform";
@@ -393,76 +319,19 @@ function createNewElementLeft(topicName, leftID, value) {
     parent_Div.style.display = "flex";
 }
 
-// Addding Linkedin link
-function addLinkedin(parentDiv, user_linkedin) {
-    if (user_linkedin != "") {
-        parentDiv[0].innerHTML =
-            "<div class='align-icon'><i class='fa-brands fa-linkedin icons'></i></div><div class='icon-text'><a href=" +
-            user_linkedin +
-            " target='_blank' class='iconic'>" +
-            user_linkedin +
-            "</a></div>";
-    }
-}
-// Adding Email ID
-function addEmail(parentDiv, user_email) {
-    if (user_email != "") {
-        parentDiv[1].innerHTML =
-            "<div class='align-icon'><i class='fa-solid fa-envelope icons'></i></div><div class='icon-text'><a href='mailto: " +
-            user_email +
-            " target='_blank' class='iconic'>" +
-            user_email +
-            "</a></div>";
-    }
-}
-// Adding Phone Number
-function addPhone(parentDiv, user_phone) {
-    if (user_phone != "") {
-        parentDiv[2].innerHTML =
-            "<div class='align-icon'><i class='fa-solid fa-mobile icons'></i></div><div class='icon-text'><a href='tel:+" +
-            user_phone +
-            " target='_blank' class='iconic'>" +
-            user_phone +
-            "</a></div>";
-    }
-}
-
-// Adding Location
-function addPlace(parentDiv, user_place) {
-    if (user_place != "") {
-        parentDiv[3].innerHTML =
-            "<div class='align-icon'><i class='fa-solid fa-location-dot icons'></i></div><div class='icon-text'><a href='' target='_blank' class='iconic'>" +
-            user_place +
-            "</a></div>";
-    }
-}
-
-// Adding Twitter link
-function addTwitter(parentDiv, user_twitter) {
-    if (user_twitter != "") {
-        let userName_twitter = user_twitter.split("/")[3];
-        user_name = nameLink.innerHTML;
-        user_name = user_name.split(" ")[0].toLowerCase();
-        parentDiv[4].innerHTML =
-            "<div class='align-icon'><i class='fa-brands fa-square-twitter icons'></i></div><div class='icon-text'><a href=" +
-            user_twitter +
-            " target='_blank' class='iconic'>" +
-            userName_twitter +
-            "</a></div>";
-    }
-}
 
 // Creates random id
-function createID(topic) {
+export function createID(topic) {
     return Math.random().toString(16).slice(2) + "-" + topic;
 }
 
 // Arranges date mm/yyyy manner
-function setDate(dateFrom, dateTo) {
-    mmFrom = dateFrom.split("-")[1];
-    mmTo = dateTo.split("-")[1];
-    yyyyFrom = dateFrom.split("-")[0];
-    yyyyTo = dateTo.split("-")[0];
+export function setDate(dateFrom, dateTo) {
+    console.log(dateFrom);
+    let mmFrom = dateFrom.split("-")[1];
+    let mmTo = dateTo.split("-")[1];
+    let yyyyFrom = dateFrom.split("-")[0];
+    let yyyyTo = dateTo.split("-")[0];
     return [mmFrom, yyyyFrom, mmTo, yyyyTo];
 }
 
@@ -470,319 +339,46 @@ function setDate(dateFrom, dateTo) {
 function createButton(text, parent_Div, topicName) {
     let display_Div = document.createElement("div");
     let className = "";
-    if (text == "Edit") className = "remove-" + topicName;
+    if (text === "X") className = "remove-" + topicName;
     else className = "edit-" + topicName;
     display_Div.innerHTML =
         "<button class=" + className + ">" + text + "</button>";
     parent_Div.appendChild(display_Div);
 }
 
-// Text inside Skills
-function getSkillsData(rightID, text) {
-    return `<div class='border-element' id= 
-            ${rightID} 
-            ><div class='inside-skills-container'><h4>
-            ${text} 
-            </h4> </div></div>`;
-}
-
-// Text inside Languages
-function getLanguagesData(text) {
-    return "<h4>" + text + "</h4><div class='place-circles'></div>";
-}
-
-// Text inside Work Experience
-function getWorkexpData(workExp_element, dates) {
-    return ` 
-                <h4>${workExp_element.role}</h4>
-                <h4 id="company-name">${workExp_element.company}</h4>
-                <div class="date-place">
-                    <div class="date">${dates[0]}-${dates[1]} - ${dates[2]}-${dates[3]}</div>
-                    <div class="place">${workExp_element.location}</div>
-                </div>
-            `;
-}
-
-// Text inside Education
-function getEducationData(education_element, dates) {
-    return `
-                <h4 class="degree">${education_element.degree} in ${education_element.specialization} </h4>
-                <h4>${education_element.college} </h4>
-                <div class="date-place">
-                    <div class="date">${dates[0]}-${dates[1]} - ${dates[2]}-${dates[3]}</div>
-                    <div class="place">CGPA- ${education_element.cgpa}</div>
-                </div>
-                <br>
-                `;
-}
-// Text inside Project
-function getProjectData(project_element, dates) {
-    return `<h4 class="project">${project_element.name}</h4>
-                <div class="date-place">
-                    <div class="date">${dates[0]}-${dates[1]} - ${dates[2]}-${dates[3]} </div>
-
-                </div>`;
-}
-
-// Reset Introduction form
-function reinitializeIntro() {
-    name.value = "";
-    role.value = "";
-    description.value = "";
-}
-
-// Reset Language form
-function reinitializeLanguages() {
-    languageName.value = "";
-    languageRating.value = "";
-}
-
-// Reset Skills form
-function reinitializeSkills() {
-    skillName.value = "";
-    skillPercentage.value = "";
-}
-
-// Reset Contact Information form
-function reinitializeContactInfo() {
-    linkedinLink.value = "";
-    mailLink.value = "";
-    phoneLink.value = "";
-    placeLink.value = "";
-    twitterLink.value = "";
-}
-
-// Reset Work-Experience form
-function reinitializeWorkexp() {
-    roleName.value = "";
-    companyName.value = "";
-    workLocation.value = "";
-    dateFrom.value = "";
-    dateTo.value = "";
-    descr[0].value = "";
-    for (let i = 1; i < descr.length; ) {
-        descr[i].remove();
-    }
-}
-
-// Reset Education form
-function reinitializeEducation() {
-    degreeName.value = "";
-    specializationEdu.value = "";
-    collegeName.value = "";
-    dateFromEdu.value = "";
-    dateToEdu.value = "";
-    courseCgpa.value = "";
-}
-
-// Reset Project form
-function reinitializeProject() {
-    projectName.value = "";
-    dateFromProject.value = "";
-    dateToProject.value = "";
-    descrProject[0].value = "";
-    // console.log("hello");
-    for (let i = 1; i < descrProject.length; ) {
-        // console.log(descrProject[i].className);
-
-        descrProject[i].remove();
-    }
-}
 
 // Add description blocks for work experience
-addWorkExpDesc = () => {
-    let parentDiv = document.getElementsByClassName("complete-desc");
-    let newDesc = document.createElement("textarea");
-    console.log(newDesc);
-    newDesc.classList.add("workexp-desc");
-    // newDesc.name="description";
-    newDesc.rows = "3";
-    newDesc.cols = "40";
-    console.log(newDesc);
-    parentDiv[0].appendChild(newDesc);
-};
-addWorkExpDescButton.addEventListener("click", addWorkExpDesc);
+workexp.addWorkExpDescButton.addEventListener("click", workexp.addWorkExpDesc);
 
 // Add description blocks for project
-addProjectDesc = () => {
-    let parentDiv = document.getElementsByClassName("complete-project-desc");
-    let newDesc = document.createElement("textarea");
-    console.log(newDesc);
-    newDesc.classList.add("project-desc");
-    newDesc.rows = "3";
-    newDesc.cols = "40";
-    console.log(newDesc);
-    parentDiv[0].appendChild(newDesc);
-};
-addProjectDescButton.addEventListener("click", addProjectDesc);
+project.addProjectDescButton.addEventListener("click", project.addProjectDesc);
 
 // Submit Button for work experience
-submitWorkExp = () => {
-    const topic = TOPIC.WORKEXP;
-    let ID = createID(topic);
-    let leftID = "left-" + ID;
-    let rightID = "right-" + ID;
-    let workExpElement = {
-        role: roleName.value,
-        company: companyName.value,
-        location: workLocation.value,
-        dateFrom: dateFrom.value,
-        dateTo: dateTo.value,
-        description: [],
-        id: ID,
-    };
-    let dates = setDate(dateFrom.value, dateTo.value);
-    for (var i = 0; i < descr.length; i++) {
-        workExpElement.description.push(descr[i].value);
-    }
-    let insideHTML = getWorkexpData(workExpElement, dates);
-    createNewElementRight(topic, rightID, insideHTML, workExpElement);
-    createNewElementLeft(topic, leftID, companyName.value, 1);
-    workExpList.push(workExpElement);
-    console.log(workExpList);
-    reinitializeWorkexp();
-};
-workExpButton.addEventListener("click", submitWorkExp);
+workexp.workExpButton.addEventListener("click", workexp.submitWorkExp);
 
 // Submit Button for project
-submitProject = () => {
-    const topic = TOPIC.PROJECT;
-    let ID = createID(topic);
-    let leftID = "left-" + ID;
-    let rightID = "right-" + ID;
-    let projectElement = {
-        name: projectName.value,
-        dateFrom: dateFromProject.value,
-        dateTo: dateToProject.value,
-        description: [],
-        id: ID,
-    };
-    let dates = setDate(dateFromProject.value, dateToProject.value);
-    for (var i = 0; i < descrProject.length; i++) {
-        projectElement.description.push(descrProject[i].value);
-    }
-    let insideHTML = getProjectData(projectElement, dates);
-    createNewElementRight(topic, rightID, insideHTML, projectElement);
-    createNewElementLeft(topic, leftID, projectElement.name, 1);
-    projectList.push(projectElement);
-    console.log(projectList);
-    reinitializeProject();
-};
-projectButton.addEventListener("click", submitProject);
+project.projectButton.addEventListener("click", project.submitProject);
 
 // Submit Button for education
-submitEducation = () => {
-    const topic = TOPIC.EDUCATION;
-    let ID = createID(topic);
-    let leftID = "left-" + ID;
-    let rightID = "right-" + ID;
-    let educationElement = {
-        degree: degreeName.value,
-        specialization: specializationEdu.value,
-        college: collegeName.value,
-        dateFrom: dateFromEdu.value,
-        dateTo: dateToEdu.value,
-        cgpa: courseCgpa.value,
-        id: ID,
-    };
-    let dates = setDate(dateFromEdu.value, dateToEdu.value);
-    let insideHTML = getEducationData(educationElement, dates);
-    createNewElementRight(topic, rightID, insideHTML, educationElement);
-    createNewElementLeft(topic, leftID, educationElement.degree);
-    educationList.push(educationElement);
-    console.log(educationList);
-    reinitializeEducation();
-};
-educationButton.addEventListener("click", submitEducation);
+education.educationButton.addEventListener("click", education.submitEducation);
 
 // Submit Button for languages
-submitLanguages = () => {
-    const topic = TOPIC.LANGUAGE;
-    let ID = createID(topic);
-    let leftID = "left-" + ID;
-    let rightID = "right-" + ID;
-    let languageElement = {
-        name: languageName.value,
-        rating: languageRating.value,
-        id: ID,
-    };
-    languageList.push(languageElement);
-    let insideHTML = getLanguagesData(languageName.value);
-    createNewElementRight(topic, rightID, insideHTML, languageElement);
-    createNewElementLeft(topic, leftID, languageElement.name, 0);
-    reinitializeLanguages();
-};
-buttonLanguage.addEventListener("click", submitLanguages);
+languages.languageButton.addEventListener("click", languages.submitLanguages);
 
 // Submit Button for skills
-submitSkills = () => {
-    const topic = TOPIC.SKILL;
-    let ID = createID(topic);
-    let leftID = "left-" + ID;
-    let rightID = "right-" + ID;
-    let skillElement = {
-        skill: skillName.value,
-        percentage: skillPercentage.value,
-        id: ID,
-    };
-    skillList.push(skillElement);
-    let insideHTML = getSkillsData(rightID, skillElement.skill);
-    createNewElementRight(topic, rightID, insideHTML, skillElement);
-    createNewElementLeft(topic, leftID, skillElement.skill, 0);
-    reinitializeSkills();
-};
-buttonSkills.addEventListener("click", submitSkills);
+skills.skillButton.addEventListener("click", skills.submitSkills);
 
-// Submit Button for introduction
-submitIntro = () => {
-    let introElement = {
-        name: name.value,
-        role: role.value,
-        description: description.value,
-    };
-    introList.push(introElement);
-    let userName = document.querySelector(".intro h1");
-    let userRole = document.querySelector(".intro h4");
-    let userDescription = document.querySelector(".intro p");
-    userName.innerHTML = name.value;
-    userRole.innerHTML = role.value;
-    userDescription.innerHTML = description.value;
-    reinitializeIntro();
-};
-buttonIntro.addEventListener("click", submitIntro);
+
+intro.buttonIntro.addEventListener("click", intro.submitIntro);
 
 // Submit Button for weblinks
-submitContactInfo = () => {
-    let userLinkedin = linkedinLink.value;
-    let userEmail = mailLink.value;
-    let userPhone = phoneLink.value;
-    let userPlace = placeLink.value;
-    let userTwitter = twitterLink.value;
-    let contactElement = {
-        linkedin: userLinkedin,
-        email: userEmail,
-        phone: userPhone,
-        place: userPlace,
-        twitter: userTwitter,
-    };
-    contactList.push(contactElement);
-    console.log(contactList);
-    let parentDiv = document.getElementsByClassName("link-icon");
-    addLinkedin(parentDiv, userLinkedin);
-    addEmail(parentDiv, userEmail);
-    addPhone(parentDiv, userPhone);
-    addPlace(parentDiv, userPlace);
-    addTwitter(parentDiv, userTwitter);
-    reinitializeContactInfo();
-};
-buttonLink.addEventListener("click", submitContactInfo);
+
+contact.buttonLink.addEventListener("click", contact.submitContactInfo);
 
 // Submit button for adding picture
-submitPicture = (e) => {
-    let reader = new FileReader();
-    reader.onload = function (e) {
-        profileImage.setAttribute("src", e.target.result);
-    };
-    reader.readAsDataURL(newProfileImage.files[0]);
-};
-submitImage.addEventListener("click", submitPicture);
+image.submitImage.addEventListener("click", image.submitPicture);
+
+
+
+
+// {/* <i class="fa-solid fa-pen-to-square"></i><i class="fa-solid fa-pen-to-square"></i> */}
