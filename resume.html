@@ -20,7 +20,7 @@
     <div class="full-page">
       <div class="form">
         <form action="">
-          <label for="topic">Choose a topic to add</label>
+          <!-- <label for="topic">Choose a topic to add</label> -->
           <br />
           <select name="topic" id="topic">
             <option value="None">Select</option>
@@ -54,9 +54,14 @@
                 rows="4"
                 cols="40"
               ></textarea>
+              <br>
             </div>
             <br />
-            <input type="button" value="submit" id="submit-intro" />
+            <!-- <input type="button" value="submit" id="submit-intro" /> -->
+            <input type="button" value="submit" id="submit-introduction" class="submit-button" />
+            <input type="button" value="confirm" id="confirm-introduction" class="confirm-button" onclick="" />
+            <br />
+            <input type="button" value="cancel" id="cancel-introduction" class="cancel-button" />
           </div>
           <div class="image-form sub-form">
             <input type="file" id="profile-image" name="filename">
@@ -127,6 +132,7 @@
             <input type="button" value="submit" id="submit-languages" />
           </div>
           <div class="project-form sub-form">
+            <h1>PROJECT</h1>
             <br />
             <div>
               <label for="project-name">Project Title</label>
@@ -155,7 +161,8 @@
             </div>
             <br />
             <!-- <button id='add-desc'>+</button> -->
-            <input type="button" value="+" id="add-project-desc" />
+            <input type="button" value="Add" id="add-project-desc" />
+            <br>
             <br>
             <!-- <input type="button" value="submit" id="submit-education" /> -->
             <input type="button" value="submit" id="submit-project" class="submit-button" />
@@ -275,6 +282,7 @@
             </p>
           </div>
           <div class="links">
+            <h2>WEBLINKS</h2>
             <div class="link-icon">
               <!-- <div class="align-icon"><i class="fa-brands fa-linkedin icons"></i></div>
                 <div class="icon-text"><a href="https://linkedin.com/in/shreyansh-jain-695320192/" target="_blank" class="iconic">linkedin/shreyanshjain</a></div> -->
@@ -297,80 +305,39 @@
             </div>
           </div>
           <div id="add-skills" class="skills-container">
-            <h2>SKILLS</h2>
-            <!-- <div class="skills">
-                    
-                    <div class="border-element">
-                        <div class="inside-skills-container C">
-                            <h4>C</h4>
-                        </div>
-                    </div>
-                    <div class="border-element">
-                        <div class="inside-skills-container Cpp">
-                            <h4>C++</h4>
-                        </div>
-                    </div>
-                    <div class="border-element">
-                        <div class="inside-skills-container HTML">
-                            <h4>HTML</h4>
-                        </div>
-                    </div>
-                    <div class="border-element">
-                        <div class="inside-skills-container CSS">
-                            <h4>CSS</h4>
-                        </div>
-                    </div>
-                    <div class="border-element">
-                        <div class="inside-skills-container Javascript">
-                            <h4>Javascript</h4>
-                        </div>
-                    </div>
-                    
-                </div> -->
+            <div id="change-skills">
+              <h2>SKILLS</h2>
+              <div class="edit-icons">
+              <button class="topic-button" id="add-skills-button"><i class="fa-solid fa-plus edit-image"></i></button>
+              
+              <button class="topic-button" id="edit-skills-button"><i class="fa-solid fa-pen-to-square edit-image"></i></button>
+              </div>
+            </div>
+            
           </div>
           <div class="languages-container">
-            <h2>LANGUAGES</h2>
-            <!-- <div class="inside-languages-container">
-                    <h4>English</h4>
-                    <div class="place-circles">
-                        <div><i class="fa-solid fa-circle rating"></i></div>
-                        <div><i class="fa-solid fa-circle rating"></i></div>
-                        <div><i class="fa-solid fa-circle rating"></i></div>
-                        <div><i class="fa-solid fa-circle rating"></i></div>
-                        <div><i class="fa-regular fa-circle unrate"></i></div>
-                    </div>
-                    
-                    
-                </div>
-                <div class="inside-languages-container">
-                    <h4>Hindi</h4>
-                    <div class="place-circles">
-                        <div><i class="fa-solid fa-circle rating"></i></div>
-                        <div><i class="fa-solid fa-circle rating"></i></div>
-                        <div><i class="fa-solid fa-circle rating"></i></div>
-                        <div><i class="fa-solid fa-circle rating"></i></div>
-                        <div><i class="fa-solid fa-circle rating"></i></div>
-                    </div>
-                    
-                    
-                </div>
-                <div class="inside-languages-container">
-                    <h4>Gujarati</h4>
-                    <div class="place-circles add-margin">
-                        <div><i class="fa-solid fa-circle rating"></i></div>
-                        <div><i class="fa-solid fa-circle rating"></i></div>
-                        <div><i class="fa-solid fa-circle rating"></i></div>
-                        <div><i class="fa-regular fa-circle unrate"></i></div>
-                        <div><i class="fa-regular fa-circle unrate"></i></div>
-                    </div>
-                    
-                    
-                </div> -->
+            <div id="change-languages">
+              <h2>LANGUAGES</h2>
+              <div class="edit-icons">
+              <button class="topic-button" id="add-languages-button"><i class="fa-solid fa-plus edit-image"></i></button>
+              
+              <button class="topic-button" id="edit-languages-button"><i class="fa-solid fa-pen-to-square edit-image"></i></button>
+              </div>
+            </div>
+            
           </div>
         </div>
         <div class="right">
           <div class="intro">
-            <h1>SHREYANSH JAIN</h1>
+            <div id="change-introduction">
+              <h1>SHREYANSH JAIN</h1>
+              <div class="edit-icons">
+              <!-- <button class="topic-button" id="add-introduction-button"><i class="fa-solid fa-plus edit-image"></i></button> -->
+              
+              <button class="topic-button" id="edit-introduction-button"><i class="fa-solid fa-pen-to-square edit-image"></i></button>
+              </div>
+            </div>
+            
             <h4>Software Engineer Role</h4>
             <hr />
             <p>
@@ -385,110 +352,50 @@
             </p>
           </div>
           <div class="content-container">
-            <h2>WORK EXPERIENCE</h2>
-            <div class="workexp-container"></div>
-            <!-- <h4>Product Engineer Intern</h4>
-            <h4 id="company-name">Deloitte</h4>
-            <div class="date-place">
-                <div class="date">05/2022 - 08/2022</div>
-                <div class="place">Bangalore, India</div>
-
+            <div id="change-workexp">
+              <h2>WORK EXPERIENCE</h2>
+              <div class="edit-icons">
+              <button class="topic-button" id="add-workexp-button"><i class="fa-solid fa-plus edit-image"></i></button>
+              
+              <button class="topic-button" id="edit-workexp-button"><i class="fa-solid fa-pen-to-square edit-image"></i></button>
+              </div>
             </div>
-            <div>
-                <ul class="space-bottom">
-                    <li >Tech stacks involved - Javascript, jQuery, Python, SQLite.</li>
-                    <li>Developed an application using web scrapping in python.</li>
-                    <li>The application reduces the efforts of implementing SAP notes in the ECC system.</li>
-                    <li>It allows user to fetch note details and update it into Database.</li>
-                    <li>It allows, the user to hierarchically fetch note details and update them in the database.</li>
-                </ul>
-            </div>
-        
-        
-          
-            <h4>Product Engineer Intern</h4>
-            <h4 id="company-name">Deloitte</h4>
-            <div class="date-place">
-                <div class="date">05/2022 - 08/2022</div>
-                <div class="place">Bangalore, India</div>
-
-            </div>
-            <div>
-                <ul class="space-bottom">
-                    <li >Tech stacks involved - Javascript, jQuery, Python, SQLite.</li>
-                    <li>Developed an application using web scrapping in python.</li>
-                    <li>The application reduces the efforts of implementing SAP notes in the ECC system.</li>
-                    <li class="">Tech stacks involved - Javascript, jQuery, Python, SQLite.</li>
-                    <li>Developed an application using web scrapping in python.</li>
-                   
-                </ul>
-            </div> -->
+            <div class="workexp-container" id="workexp-information"></div>
+            
           </div>
           <div class="content-container">
-            <h2>PROJECTS</h2>
-            <div class="project-container"></div>
-            <!-- <h4 class="project">Football League</h4>
-            
-            <div class="date-place">
-                <div class="date">05/2022 - 08/2022</div>
+            <div id="change-project">
+              <h2>PROJECT</h2>
+              <div class="edit-icons">
+              <button class="topic-button" id="add-project-button"><i class="fa-solid fa-plus edit-image"></i></button>
+              
+              <button class="topic-button" id="edit-project-button"><i class="fa-solid fa-pen-to-square edit-image"></i></button>
+              </div>
             </div>
-            <div>
-                <ul class="space-bottom">
-                    <li >This is a console-based project of Java with MySQL.</li>
-                    <li>In this, user can see stats and various other information about football matches.</li>
-                    <li>The admins can enter the new match details, and the users can see various stats and other details of the
-                        league.</li>
-                </ul>
-            </div>
-        
-            <h4 class="project">Football League</h4>
-            
-            <div class="date-place">
-                <div class="date">05/2022 - 08/2022</div>
-            </div>
-            <div>
-                <ul class="space-bottom">
-                    <li>This is a console-based project of Java with MySQL.</li>
-                    <li>In this, user can see stats and various other information about football matches.</li>
-                    <li>The admins can enter the new match details, and the users can see various stats and other details of the
-                        league.</li>
-                </ul>
-            </div> -->
+            <div class="project-container" id="project-information"></div>
+           
           </div>
           <div class="education">
-            <h2>EDUCATION</h2>
-            <div class="education-container"></div>
-            <!-- <h4 class="degree">B.Tech in Computer Science </h4>
-            <h4>The LNM Institute of Information Technology </h4>
-            <div class="date-place">
-                <div class="date">08/2019 - 08/2023</div>
-                <div class="place">CGPA - 7.17</div>
+            <div id="change-education">
+              <h2>EDUCATION</h2>
+              <div class="edit-icons">
+              <button class="topic-button" id="add-education-button"><i class="fa-solid fa-plus edit-image"></i></button>
+              <button class="topic-button" id="edit-education-button"><i class="fa-solid fa-pen-to-square edit-image"></i></button>
+              </div>
             </div>
-            <br>
-            <h4 class="degree">B.Tech in Computer Science </h4>
-            <h4>The LNM Institute of Information Technology </h4>
-            <div class="date-place">
-                <div class="date">08/2019 - 08/2023</div>
-                <div class="place">CGPA - 7.17</div>
-            </div> -->
+            
+            <div class="education-container" id="education-information"></div>
+            
           </div>
         </div>
       </div>
       
     </div>
     <div >
-        <input type="button" value="Preview" id="preview-resume" class="preview"/>
+        <input type="button" value="Edit" id="preview-resume" class="preview"/>
     </div>
    
-    <!--ul li::before 
-{
-    content: "\2022";  /* Add content: \2022 is the CSS Code/unicode for a bullet */
-    color:  rgb(31, 176, 128);; /* Change the color */
-    font-weight: bold; /* If you want it to be bold */
-    display: inline-block;/* Needed to add space between the bullet and the text */
-    width: 1em; /* Also needed for space (tweak if needed) */
-    margin-left: -1em; /* Also needed for space (tweak if needed) */
-}-->
+   
     <script type="module" src="index.js"></script>
   </body>
 </html>

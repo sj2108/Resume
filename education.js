@@ -1,4 +1,4 @@
-import * as index from "./index.js";
+import {createNewElementRight,setDate,TOPIC,createID} from "./index.js";
 
 export let educationList=[];
 let degreeName = document.getElementById("degree-name");
@@ -8,25 +8,91 @@ let dateFromEdu = document.getElementById("date-from-edu");
 let dateToEdu = document.getElementById("date-to-edu");
 let courseCgpa = document.getElementById("cgpa");
 export let educationButton = document.getElementById("submit-education");
+export let cancelEducationButton = document.getElementById("cancel-education");
+export let confirmEducationButton = document.getElementById("confirm-education");
+export let editEducationButton = document.getElementById(
+    "edit-education-button"
+);
+export let addEducationButton = document.getElementById("add-education-button");
+export let editInsideEducationButton = document.getElementById(
+    "education-information"
+);
+
+
+export function assignEducationValue(completeEducationData){
+    if(completeEducationData){
+        educationList = completeEducationData;
+        for (const element in completeEducationData) {
+            console.log(completeEducationData.dateFrom);
+            let dates = setDate(
+                completeEducationData[element].dateFrom,
+                completeEducationData[element].dateTo
+            );
+            let insideHTML = getEducationData(
+                completeEducationData[element],
+                dates
+            );
+            let rightID = "right-" + completeEducationData[element].id;
+            createNewElementRight(
+                TOPIC.EDUCATION,
+                rightID,
+                insideHTML,
+                completeEducationData[element]
+            );
+        }
+    }
+}
 
 export function confirmEducation(parent_Div, eduIndex)
 {
     educationList.splice(eduIndex, 1);
-    let elementId = parent_Div.getAttribute("id");
+    localStorage.setItem("educationList", JSON.stringify(educationList));
     parent_Div.remove();
-    let elementIdRight = index.getElementIDRight(elementId);
-    let elementRemove = document.getElementById(elementIdRight);
-    elementRemove.remove();
     submitEducation();
-    index.changeButtons(true, index.TOPIC.EDUCATION);
+    document
+        .getElementsByClassName(TOPIC.EDUCATION + "-form")[0]
+        .classList.add("sub-form");
+    let insideButton = document.getElementsByClassName(
+        "inside-education-class"
+    );
+    for (let i = 0; i < insideButton.length; i++)
+        insideButton[i].style.display = "none";
+    let makeHeadingButtonInvisible =
+        document.getElementsByClassName("topic-button");
+    for (let i = 0; i < makeHeadingButtonInvisible.length; i++)
+        makeHeadingButtonInvisible[i].style.display = "block";
 }
 export function cancelEducation()
 {
-    index.changeButtons(true,index.TOPIC.EDUCATION);
+    
     reinitializeEducation();
+    let insideButton = document.getElementsByClassName(
+        "inside-education-class"
+    );
+    for (let i = 0; i < insideButton.length; i++)
+        insideButton[i].style.display = "none";
+    let makeHeadingButtonInvisible =
+        document.getElementsByClassName("topic-button");
+    for (let i = 0; i < makeHeadingButtonInvisible.length; i++)
+        makeHeadingButtonInvisible[i].style.display = "block";
+    // index.changeButtons(true, index.TOPIC.EDUCATION);
+    document
+        .getElementsByClassName(TOPIC.EDUCATION + "-form")[0]
+        .classList.add("sub-form");
+   
 }
 export function deleteEducation(elementArrayId){
+// educationList=index.completeEducationData;
 educationList = educationList.filter((l) => l.id != elementArrayId);
+localStorage.setItem("educationList", JSON.stringify(educationList));
+let insideButton = document.getElementsByClassName("inside-education-class");
+for (let i = 0; i < insideButton.length; i++)
+    insideButton[i].style.display = "none";
+let makeHeadingButtonInvisible =
+    document.getElementsByClassName("topic-button");
+for (let i = 0; i < makeHeadingButtonInvisible.length; i++)
+    makeHeadingButtonInvisible[i].style.display = "block";
+
 console.log(educationList);
 }
 
@@ -48,9 +114,15 @@ export function reinitializeEducation() {
     courseCgpa.value = "";
 }
 
-function getEducationData(education_element, dates) {
+export function getEducationData(education_element, dates) {
     return `
+                <div class="change-inside-education">
                 <h4 class="degree">${education_element.degree} in ${education_element.specialization} </h4>
+                <div class="edit-icons">
+                <div class="inside-education-class" id="edit-inside-education-button"><i class="fa-solid fa-pen-to-square edit-image"></i></div>
+                <div class="inside-education-class" id="remove-inside-education-button"><i class="fa-solid fa-trash edit-image"></i></div>
+                </div>
+                </div>
                 <h4>${education_element.college} </h4>
                 <div class="date-place">
                     <div class="date">${dates[0]}-${dates[1]} - ${dates[2]}-${dates[3]}</div>
@@ -62,8 +134,8 @@ function getEducationData(education_element, dates) {
 
 
 export let submitEducation = () => {
-    const topic = index.TOPIC.EDUCATION;
-    let ID = index.createID(topic);
+    const topic = TOPIC.EDUCATION;
+    let ID = createID(topic);
     let leftID = "left-" + ID;
     let rightID = "right-" + ID;
     let educationElement = {
@@ -76,12 +148,23 @@ export let submitEducation = () => {
         id: ID,
     };
 
-    let dates = index.setDate(dateFromEdu.value, dateToEdu.value);
+    let dates = setDate(dateFromEdu.value, dateToEdu.value);
     let insideHTML = getEducationData(educationElement, dates);
-    index.createNewElementRight(topic, rightID, insideHTML, educationElement);
-    index.createNewElementLeft(topic, leftID, educationElement.degree);
+    createNewElementRight(topic, rightID, insideHTML, educationElement);
     educationList.push(educationElement);
-    // localStorage.setItem("educationList", JSON.stringify(educationElement));
+    localStorage.setItem("educationList", JSON.stringify(educationList));
     console.log(educationList);
     reinitializeEducation();
+    document
+        .getElementsByClassName(TOPIC.EDUCATION + "-form")[0]
+        .classList.add("sub-form");
+    let insideButton = document.getElementsByClassName(
+        "inside-education-class"
+    );
+    for (let i = 0; i < insideButton.length; i++)
+        insideButton[i].style.display = "none";
+    let makeHeadingButtonInvisible =
+        document.getElementsByClassName("topic-button");
+    for (let i = 0; i < makeHeadingButtonInvisible.length; i++)
+        makeHeadingButtonInvisible[i].style.display = "block";
 };

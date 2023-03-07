@@ -10,7 +10,44 @@ html {
     display: flex;
     justify-content: space-between;
 }
+#change-education,#change-workexp,
+.change-inside-workexp,
+.change-inside-education,#change-project,.change-inside-project,.edit-icons,#change-introduction,#change-skills,#change-languages{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+label{
+    display: block;
+}
+
+.topic-button{
+    display: none;
+    background-color: rgb(31, 176, 128) ;
+    /* width: 7%; */
+    /* height: 2%; */
+    font-size: 1.8rem;
+    margin: 15.58px 5px 12px 5px;
+}
+.inside-education-class,.inside-project-class,.inside-workexp-class{
+    display: none;
+    background-color:  rgb(31, 176, 128);
+    /* width: 7%; */
+    height: 1.5%;
+    font-size: 1.5rem;
+    margin: 0px 5px 0px 5px;
+}
+#edit-introduction-button
+{
+    background-color: white;
+}
+.edit-image
+{
+    color: black;
+}
+
 .form {
+    display: none;
     width: 40%;
     margin: 1.5%;
     background: lightcyan;
@@ -23,8 +60,9 @@ html {
 }
 .layout {
     /* font-size: 2rem !important; */
-    width: 54%;
-    margin: 1.5%;
+    width: 60%;
+    margin: auto;
+    /* margin: 1.5%; */
     display: flex;
     border: 1px solid black;
     padding-bottom: 20px;
@@ -65,9 +103,6 @@ textarea {
     display: none;
 }
 
-.links {
-    margin: 5px 10px;
-}
 
 .icons {
     /* text-align: center; */
@@ -111,7 +146,9 @@ h2 {
 #confirm-project,
 #cancel-project,
 #cancel-workexp,
-#confirm-workexp {
+#confirm-workexp,
+#confirm-introduction,
+#cancel-introduction {
     display: none;
 }
 h4 {
@@ -136,8 +173,6 @@ h4 {
     padding: 0px;
     line-height: 1;
     font-size: 2.3rem;
-    /* font-size: 0.9em; */
-    /* //////8margin-bottom: 5px; */
     color: rgb(31, 176, 128);
 }
 .inside-languages-container h4 {
@@ -279,24 +314,9 @@ li {
     color: rgb(31, 176, 128);
     line-height: 0.1em;
 }
-.C {
-    width: 70%;
-}
-.Cpp {
-    width: 90%;
-    /* transition-duration: 5s; */
-}
-.HTML {
-    width: 75%;
-    /* transition-duration: 5s; */
-}
-.CSS {
-    width: 80%;
-    /* transition-duration: 5s; */
-}
-.Javascript {
-    width: 60%;
-    /* transition-duration: 5s; */
+
+select{
+    display: none;
 }
 .skills .border-element {
     margin-left: 10px;
@@ -379,7 +399,6 @@ a.iconic {
 
     .links {
         margin-top: 5%;
-        /* margin: 80px 0px 0px 25px; */
         display: flex;
         justify-content: space-around;
         flex-wrap: wrap;
@@ -398,9 +417,7 @@ a.iconic {
         width: 48%;
         margin-bottom: 10px;
         text-align: center;
-        /* display: flex;
-        flex-wrap: wrap;
-         */
+       
     }
 
     .introduction h4 {
@@ -410,9 +427,6 @@ a.iconic {
         font-weight: normal;
         /* font-size: 1.2em; */
         margin-left: 15px;
-        margin-top: 0px;
-        margin-bottom: 0px;
-        border: 0px solid rgb(31, 176, 128);
     }
     .preview{
     margin-left: 150px;

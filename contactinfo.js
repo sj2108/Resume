@@ -8,6 +8,30 @@ let placeLink = document.getElementById("place");
 let twitterLink = document.getElementById("twitter");
 export let buttonLink = document.getElementById("submit-contact-info");
 
+export function assignContactValue(completeContactData)
+{
+    if(completeContactData){
+    contactList=completeContactData;
+    let parentDiv = document.getElementsByClassName("link-icon");  
+    if(completeContactData.linkedin)
+    {
+        addLinkedin(parentDiv, completeContactData.linkedin);
+    }
+    if (completeContactData.email) {
+        addEmail(parentDiv, completeContactData.email);
+    }
+    if (completeContactData.phone) {
+            addPhone(parentDiv, completeContactData.phone);
+    }
+    if (completeContactData.place) {
+        addPlace(parentDiv, completeContactData.place);
+    }
+    if (completeContactData.twitter) {
+        addTwitter(parentDiv, completeContactData.twitter);
+    }
+}
+    
+}
 
 // Reset Contact Information form
 function reinitializeContactInfo() {
@@ -88,7 +112,9 @@ export let submitContactInfo = () => {
         place: userPlace,
         twitter: userTwitter,
     };
-    contactList.push(contactElement);
+    console.log(contactElement)
+    contactList=contactElement;
+    localStorage.setItem("contactList", JSON.stringify(contactList));
     console.log(contactList);
     let parentDiv = document.getElementsByClassName("link-icon");
     addLinkedin(parentDiv, userLinkedin);
