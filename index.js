@@ -1,6 +1,6 @@
-import * as skills from "./skills.js";
-import {reassignIntroductionForEdit,buttonIntro,submitIntro} from "./introduction.js";
-import * as languages from "./languages.js";
+import {assignSkillsValue,deleteSkill,skillList,skillButton,submitSkills,editSkillsButton,addSkillsButton,editInsideSkillsButton, editInsideSkillsInfo, editSkillsInfo, addSkillsInfo} from "./skills.js";
+import {editIntroductionInfo,editIntroductionButton,buttonIntro,submitIntro} from "./introduction.js";
+import {assignLanguagesValue,deleteLanguage,languageButton,submitLanguages,editLanguagesButton,addLanguagesButton,editInsideLanguagesButton,addLanguagesInfo,editLanguagesInfo,editInsideLanguagesInfo} from "./languages.js";
 // import * as project from "./project.js";
 import {
     assignWorkExpValue,
@@ -18,6 +18,9 @@ import {
     editWorkExpButton,
     addWorkExpButton,
     editInsideWorkExpButton,
+    editInsideWorkExpInfo,
+    addWorkExpInfo,
+    editWorkExpInfo,
 }  from "./workexp.js"
 import {
     assignProjectValue,
@@ -35,6 +38,9 @@ import {
     editProjectButton,
     addProjectButton,
     editInsideProjectButton,
+    editProjectInfo,
+    addProjectInfo,
+    editInsideProjectInfo
 } from "./project.js";
 import {
     assignEducationValue,
@@ -50,11 +56,14 @@ import {
     editEducationButton,
     addEducationButton,
     editInsideEducationButton,
+    editEducationInfo,
+    addEducationInfo,
+    editInsideEducationInfo
 } from "./education.js";
-import * as image from "./image.js";
-import * as contact from "./contactinfo.js";
+import {submitImage,submitPicture,editImageButton,editImageInfo} from "./image.js";
+import {editContactInfo,assignContactValue,buttonLink,submitContactInfo,editContactInfoButton} from "./contactinfo.js";
 
-let topic = document.getElementById("topic");
+
 export const TOPIC = {
     PROJECT: "project",
     EDUCATION: "education",
@@ -62,196 +71,152 @@ export const TOPIC = {
     SKILL: "skills",
     LANGUAGE: "languages",
     INTRODUCTION: "intro",
-    
 };
 
-// localStorage.clear();
-
-export let editIntroductionButton=document.getElementById("edit-introduction-button");
 
 
-editIntroductionButton.addEventListener("click", (e) => {
-    changeForm("intro");
-    reassignIntroductionForEdit();
-});
-
-export let completeEducationData = JSON.parse(localStorage.getItem("educationList"));
-export let completeContactData = JSON.parse(localStorage.getItem("contactList"));
-export let completeWorkExpData = JSON.parse(localStorage.getItem("workExpList"));
-export let completeProjectData = JSON.parse(localStorage.getItem("projectList"));
+export let completeEducationData = JSON.parse(
+    localStorage.getItem("educationList")
+);
+export let completeContactData = JSON.parse(
+    localStorage.getItem("contactList")
+);
+export let completeWorkExpData = JSON.parse(
+    localStorage.getItem("workExpList")
+);
+export let completeProjectData = JSON.parse(
+    localStorage.getItem("projectList")
+);
 export let completeSkillsData = JSON.parse(localStorage.getItem("skillList"));
-export let completeLanguagesData = JSON.parse(localStorage.getItem("languageList"));
+export let completeLanguagesData = JSON.parse(
+    localStorage.getItem("languageList")
+);
 export let completeIntroData = JSON.parse(localStorage.getItem("introList"));
 
-
 assignEducationValue(completeEducationData);
-contact.assignContactValue(completeContactData);
+assignContactValue(completeContactData);
 assignProjectValue(completeProjectData);
 console.log(completeContactData);
 assignWorkExpValue(completeWorkExpData);
-// assignIntroductionValue(completeIntroData);
-skills.assignSkillsValue(completeSkillsData);
-languages.assignLanguagesValue(completeLanguagesData);
+assignSkillsValue(completeSkillsData);
+assignLanguagesValue(completeLanguagesData);
 
 
 
-let projectIndex = -1;
-let eduIndex = -1;
-let workexpIndex = -1;
-let parent_Div = "";
+editContactInfoButton.addEventListener("click",(e)=>{
+    editContactInfo();
+})
+editIntroductionButton.addEventListener("click", (e) => {
+    editIntroductionInfo();
+});
+
+
+
+
+
+export let data={
+    projectIndex : -1,
+    eduIndex : -1,
+    workexpIndex : -1,
+    parent_Div : ""
+}
 
 let previewButton = document.getElementById("preview-resume");
 let lastTopicValue = "None";
 
-editInsideWorkExpButton.addEventListener("click", (e) => {
-    let parentDiv = e.target.parentNode.parentNode.parentNode.parentNode;
-    let ID = e.target.parentNode.getAttribute("id");
-    let rightID = parentDiv.getAttribute("id");
-    let elementID = rightID.split("-")[1] + "-" + rightID.split("-")[2];
-    if (ID === "edit-inside-workexp-button") {
-        console.log(ID);
-        console.log(parentDiv);
 
-        changeForm("workexp");
-        changeButtons(false, TOPIC.WORKEXP);
-        console.log(elementID);
-        for (let i = 0; i < workExpList.length; i++) {
-            if (workExpList[i].id === elementID) {
-                workexpIndex = i;
-                console.log("Hello");
-                reassignWorkExpForEdit(workExpList[i]);
-                break;
-            }
-        }
-        parent_Div = parentDiv;
-    } else {
-        parentDiv.remove();
-        deleteWorkexp(elementID);
-    }
+editImageButton.addEventListener("click", () => {
+    editImageInfo();
+});
+
+addLanguagesButton.addEventListener("click", () => {
+    addLanguagesInfo();
+});
+
+editLanguagesButton.addEventListener("click", () => {
+    editLanguagesInfo();
+});
+editInsideLanguagesButton.addEventListener("click", (e) => {
+    editInsideLanguagesInfo(e);
+});
+
+addSkillsButton.addEventListener("click", () => {
+    addSkillsInfo();
+});
+
+editSkillsButton.addEventListener("click", () => {
+    editSkillsInfo();
+});
+
+editInsideSkillsButton.addEventListener("click", (e) => {
+    editInsideSkillsInfo(e)
+       
+});
+
+editInsideWorkExpButton.addEventListener("click", (e) => {
+    editInsideWorkExpInfo(e);
 });
 
 addWorkExpButton.addEventListener("click", () => {
-    let makeHeadingButtonInvisible =
-        document.getElementsByClassName("topic-button");
-    changeForm("workexp");
-    for (let i = 0; i < makeHeadingButtonInvisible.length; i++)
-        makeHeadingButtonInvisible[i].style.display = "none";
+    addWorkExpInfo();
 });
 
 editWorkExpButton.addEventListener("click", () => {
-    let makeHeadingButtonInvisible =
-        document.getElementsByClassName("topic-button");
-    let insideButton = document.getElementsByClassName("inside-workexp-class");
-    for (let i = 0; i < makeHeadingButtonInvisible.length; i++)
-        makeHeadingButtonInvisible[i].style.display = "none";
-    for (let i = 0; i < insideButton.length; i++)
-        insideButton[i].style.display = "block";
+    editWorkExpInfo();
 });
 
 
 editInsideProjectButton.addEventListener("click", (e) => {
-    let parentDiv = e.target.parentNode.parentNode.parentNode.parentNode;
-    let ID = e.target.parentNode.getAttribute("id");
-    let rightID = parentDiv.getAttribute("id");
-    let elementID = rightID.split("-")[1] + "-" + rightID.split("-")[2];
-    if (ID === "edit-inside-project-button") {
-        console.log(ID);
-        console.log(parentDiv);
-
-        changeForm("project");
-        changeButtons(false, TOPIC.PROJECT);
-        console.log(elementID);
-        for (let i = 0; i < projectList.length; i++) {
-            if (projectList[i].id === elementID) {
-                projectIndex = i;
-                console.log("Hello");
-                reassignProjectForEdit(projectList[i]);
-                break;
-            }
-        }
-        parent_Div = parentDiv;
-    } else {
-        parentDiv.remove();
-        deleteProject(elementID);
-    }
+    editInsideProjectInfo(e);
 });
 
 addProjectButton.addEventListener("click", () => {
-    
-    let makeHeadingButtonInvisible =
-        document.getElementsByClassName("topic-button");
-    changeForm("project");
-    for (let i = 0; i < makeHeadingButtonInvisible.length; i++)
-        makeHeadingButtonInvisible[i].style.display = "none";
+    addProjectInfo();
 });
 
 editProjectButton.addEventListener("click", () => {
-   
-    let makeHeadingButtonInvisible=document.getElementsByClassName("topic-button");
-    let insideButton = document.getElementsByClassName(
-        "inside-project-class"
-    );
-    for (let i = 0; i < makeHeadingButtonInvisible.length; i++)
-        makeHeadingButtonInvisible[i].style.display = "none";
-    for (let i = 0; i < insideButton.length; i++)
-        insideButton[i].style.display = "block";
+    editProjectInfo();
 });
 editInsideEducationButton.addEventListener("click",(e)=>{
-    
-    let parentDiv=(e.target).parentNode.parentNode.parentNode.parentNode;
-    let ID=(e.target).parentNode.getAttribute("id");
-    let rightID = parentDiv.getAttribute("id");
-    let elementID = rightID.split("-")[1] + "-" + rightID.split("-")[2];
-    if(ID==="edit-inside-education-button")
-    {
-        console.log(ID);
-        console.log(parentDiv);
-        
-        changeForm("education");
-        changeButtons(false,TOPIC.EDUCATION)
-        console.log(elementID);
-        for (let i = 0; i < educationList.length; i++) {
-            if (educationList[i].id === elementID) {
-                eduIndex = i;
-                console.log("Hello");
-                reassignEducationForEdit(educationList[i]);
-                break;
-            }
-        }
-        parent_Div = parentDiv;
-    }
-    else
-    {
-        parentDiv.remove();
-        deleteEducation(elementID);
-    }
-    
-
+    editInsideEducationInfo(e);
 })
 
 addEducationButton.addEventListener("click", () => {
-    let makeHeadingButtonInvisible =
-        document.getElementsByClassName("topic-button");
-    // changeForm("project");
-    for (let i = 0; i < makeHeadingButtonInvisible.length; i++)
-        makeHeadingButtonInvisible[i].style.display = "none";
-    changeForm("education");
-    
+    addEducationInfo();
 });
 
 editEducationButton.addEventListener("click", () => {
-   let makeHeadingButtonInvisible =
-       document.getElementsByClassName("topic-button");
-//    changeForm("education");
-   for (let i = 0; i < makeHeadingButtonInvisible.length; i++)
-       makeHeadingButtonInvisible[i].style.display = "none";
-    
+    editEducationInfo();
+});
+
+export function addForm(topicName){
+    document
+        .getElementsByClassName(topicName + "-form")[0]
+        .classList.add("sub-form");
+}
+export function changeForm(topic){
+    if(lastTopicValue!="None")
+    document.getElementsByClassName(lastTopicValue + "-form")[0].classList.add("sub-form");
+    document.getElementsByClassName(topic + "-form")[0].classList.remove("sub-form");
+    lastTopicValue = topic;
+    console.log(lastTopicValue);
+};
+
+export function changeTopicButtons(displayType)
+{ 
+    let makeHeadingButtonInvisible =
+        document.getElementsByClassName("topic-button");
+    for (let i = 0; i < makeHeadingButtonInvisible.length; i++)
+        makeHeadingButtonInvisible[i].style.display = displayType;
+}
+export function changeInsideTopicButtons(topicName,displayType)
+{
     let insideButton = document.getElementsByClassName(
-        "inside-education-class"
+        "inside-"+topicName+"-class"
     );
     for (let i = 0; i < insideButton.length; i++)
-        insideButton[i].style.display = "block";
-});
+        insideButton[i].style.display = displayType;
+}
 
 
 let previewButtonChanges = ({formDisplay,resumeWidth,resumeMargin,rightWidth,leftWidth,buttonDisplay}) => {
@@ -300,13 +265,6 @@ previewButton.addEventListener("click", (e) => {
 });
 
 // console.log(topic.value);
-export function changeForm(topic){
-    if(lastTopicValue!="None")
-    document.getElementsByClassName(lastTopicValue + "-form")[0].classList.add("sub-form");
-    document.getElementsByClassName(topic + "-form")[0].classList.remove("sub-form");
-    lastTopicValue = topic;
-    console.log(lastTopicValue);
-};
 
 export function changeButtons(showSubmitButton, topic) {
     let confirmButton = document.getElementById("confirm-" + topic);
@@ -328,15 +286,15 @@ export let getElementIDRight=(elementId)=> {
     return "right-" + elementId1 + "-" + elementId2;
 }
 confirmProjectButton.addEventListener("click", () => {
-    confirmProject(parent_Div,projectIndex);
+    confirmProject(data.parent_Div,data.projectIndex);
     
 });
 confirmWorkexpButton.addEventListener("click", () => {
-    confirmWorkexp(parent_Div,workexpIndex);
+    confirmWorkexp(data.parent_Div,data.workexpIndex);
 });
 
 confirmEducationButton.addEventListener("click", () => {
-    confirmEducation(parent_Div,eduIndex);
+    confirmEducation(data.parent_Div,data.eduIndex);
 });
 cancelProjectButton.addEventListener("click", () => {
     cancelProject();
@@ -368,9 +326,9 @@ export let addDescription = (description, topicName,parentDiv) => {
 let removeElementFromArray = (topicName,elementArrayId) => {
     if (topicName === TOPIC.LANGUAGE) {
         completeEducationData = completeEducationData.filter((l) => l.id != elementArrayId);
-        languages.deleteLanguage(elementArrayId);
+        deleteLanguage(elementArrayId);
     } else if (topicName === TOPIC.SKILL) {
-        skills.deleteSkill(elementArrayId);
+        deleteSkill(elementArrayId);
     } else if (topicName === TOPIC.WORKEXP) {
         deleteWorkexp(elementArrayId);
     } else if (topicName === TOPIC.PROJECT) {
@@ -386,7 +344,7 @@ parentDiv[0].addEventListener("click", (e) => {
         if (e.target.textContent === "Edit") {
             e.preventDefault();
             let parent = e.target.parentNode.parentNode;
-            parent_Div = parent;
+            data.parent_Div = parent;
             let element_id = parent.getAttribute("id");
             let element_id1 = element_id.split("-")[1];   // Give the randomly geneated ID
             let element_id2 = element_id.split("-")[2];   // Give the topic name
@@ -400,7 +358,7 @@ parentDiv[0].addEventListener("click", (e) => {
                     if (educationList[i].id === element_id) {
                         eduIndex = i;
                         reassignEducationForEdit(
-                            educationList[i]
+                            data.educationList[i]
                         );
                         break;
                     }
@@ -410,7 +368,7 @@ parentDiv[0].addEventListener("click", (e) => {
                 reinitializeProject();
                 for (let i = 0; i < projectList.length; i++) {
                     if (projectList[i].id === element_id) {
-                        projectIndex = i;
+                        data.projectIndex = i;
                         reassignProjectForEdit(projectList[i]);
                         break;
                     }
@@ -421,7 +379,7 @@ parentDiv[0].addEventListener("click", (e) => {
                 // let workexpIndex = -1;
                 for (let i = 0; i < workExpList.length; i++) {
                     if (workExpList[i].id === element_id) {
-                        workexpIndex = i;
+                        data.workexpIndex = i;
                         reassignWorkExpForEdit(workExpList[i]);
                         break;
                     }
@@ -472,28 +430,23 @@ export function createNewElementRight(topicName, rightID, insideHTML, element_da
         // languages
         newDiv.id = rightID;
         newDiv.className = "inside-" + topicName + "-container";
-        parentDiv[0].appendChild(newDiv);
-        let insideNewDiv = document.getElementsByClassName("place-circles");
+        console.log(newDiv.childNodes[1]);
         for (let i = 0; i < element_data.rating; i++) {
-            let newDiv = document.createElement("div");
-            newDiv.innerHTML = "<i class='fa-solid fa-circle rating'></i>";
-            insideNewDiv[(languages.languageList.length) - 1].appendChild(newDiv);
+            let tempDiv = document.createElement("div");
+            tempDiv.innerHTML = "<i class='fa-solid fa-circle rating'></i>";
+            newDiv.childNodes[1].appendChild(tempDiv);
         }
         for (let i = 0; i < 5 - element_data.rating; i++) {
-            let newDiv = document.createElement("div");
-            newDiv.innerHTML = "<i class='fa-regular fa-circle unrate'></i>";
-            insideNewDiv[(languages.languageList.length) - 1].appendChild(newDiv);
+            let tempDiv = document.createElement("div");
+            tempDiv.innerHTML = "<i class='fa-regular fa-circle unrate'></i>";
+            newDiv.childNodes[1].appendChild(tempDiv);
         }
+        parentDiv[0].appendChild(newDiv);
     } else if (topicName === TOPIC.SKILL) {
-        console.log(skills.skillList)
+        console.log(skillList)
         newDiv.className = TOPIC.SKILL;
         parentDiv[0].appendChild(newDiv);
-        console.log(skills.skillList.length);
-        let insideNewDiv = document.querySelectorAll(
-            ".inside-skills-container"
-        );
-        insideNewDiv[(skills.skillList.length) - 1].style.width =
-            "" + element_data.percentage + "%";
+        console.log(skillList.length);
     } else {
         newDiv.id = rightID;
         parentDiv[0].appendChild(newDiv);
@@ -568,18 +521,18 @@ projectButton.addEventListener("click", submitProject);
 educationButton.addEventListener("click", submitEducation);
 
 // Submit Button for languages
-languages.languageButton.addEventListener("click", languages.submitLanguages);
+languageButton.addEventListener("click", submitLanguages);
 
 // Submit Button for skills
-skills.skillButton.addEventListener("click", skills.submitSkills);
+skillButton.addEventListener("click", submitSkills);
 
 
 buttonIntro.addEventListener("click", submitIntro);
 
 // Submit Button for weblinks
 
-contact.buttonLink.addEventListener("click", contact.submitContactInfo);
+buttonLink.addEventListener("click", submitContactInfo);
 
 // Submit button for adding picture
-image.submitImage.addEventListener("click", image.submitPicture);
+submitImage.addEventListener("click", submitPicture);
 

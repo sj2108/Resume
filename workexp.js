@@ -1,4 +1,4 @@
-import {createNewElementRight,setDate,TOPIC,createID,addDescription} from "./index.js";
+import {createNewElementRight,setDate,TOPIC,createID,addDescription,addForm,changeInsideTopicButtons,changeTopicButtons,data,changeForm,changeButtons} from "./index.js";
 
 export let workExpList = [];
 export let addWorkExpDescButton = document.getElementById("add-desc");
@@ -18,6 +18,39 @@ export let editInsideWorkExpButton = document.getElementById(
 );
 
 
+export function editWorkExpInfo() {
+    changeTopicButtons("none");
+    changeInsideTopicButtons(TOPIC.WORKEXP, "block");
+}
+export function addWorkExpInfo() {
+    changeTopicButtons("none");
+    changeForm(TOPIC.WORKEXP);
+}
+export function editInsideWorkExpInfo(e) {
+    let parentDiv = e.target.parentNode.parentNode.parentNode.parentNode;
+    let ID = e.target.parentNode.getAttribute("id");
+    let rightID = parentDiv.getAttribute("id");
+    let elementID = rightID.split("-")[1] + "-" + rightID.split("-")[2];
+    if (ID === "edit-inside-workexp-button") {
+        changeForm("workexp");
+        changeButtons(false, TOPIC.WORKEXP);
+        console.log(elementID);
+        for (let i = 0; i < workExpList.length; i++) {
+            if (workExpList[i].id === elementID) {
+                data.workexpIndex = i;
+                console.log("Hello");
+                reassignWorkExpForEdit(workExpList[i]);
+                break;
+            }
+        }
+        data.parent_Div = parentDiv;
+    } else {
+        parentDiv.remove();
+        deleteWorkexp(elementID);
+    }
+}
+
+
 export function assignWorkExpValue(completeWorkExpData) {
     if (completeWorkExpData) {
         workExpList = completeWorkExpData;
@@ -32,7 +65,6 @@ export function assignWorkExpValue(completeWorkExpData) {
                 dates
             );
             let rightID = "right-" + completeWorkExpData[element].id;
-            let leftID = "left-" + completeWorkExpData[element].id;
             createNewElementRight(
                 TOPIC.WORKEXP,
                 rightID,
@@ -50,44 +82,22 @@ export function confirmWorkexp(parent_Div,workexpIndex)
     localStorage.setItem("workExpList", JSON.stringify(workExpList));
     parent_Div.remove();
     submitWorkExp();
-    document
-        .getElementsByClassName(TOPIC.PROJECT + "-form")[0]
-        .classList.add("sub-form");
-    let insideButton = document.getElementsByClassName("inside-workexp-class");
-    for (let i = 0; i < insideButton.length; i++)
-        insideButton[i].style.display = "none";
-    let makeHeadingButtonInvisible =
-        document.getElementsByClassName("topic-button");
-    for (let i = 0; i < makeHeadingButtonInvisible.length; i++)
-        makeHeadingButtonInvisible[i].style.display = "block";
 }
 export function deleteWorkexp(elementArrayId)
 {
     
     workExpList = workExpList.filter((l) => l.id != elementArrayId);
     localStorage.setItem("workExpList", JSON.stringify(workExpList));
-    let insideButton = document.getElementsByClassName("inside-workexp-class");
-    for (let i = 0; i < insideButton.length; i++)
-        insideButton[i].style.display = "none";
-    let makeHeadingButtonInvisible =
-        document.getElementsByClassName("topic-button");
-    for (let i = 0; i < makeHeadingButtonInvisible.length; i++)
-        makeHeadingButtonInvisible[i].style.display = "block";
+    changeInsideTopicButtons(TOPIC.WORKEXP, "none");
+    changeTopicButtons("block");
     console.log(workExpList);
 }
 export function cancelWorkexp()
 {
     reinitializeWorkexp();
-     document
-         .getElementsByClassName(TOPIC.WORKEXP + "-form")[0]
-         .classList.add("sub-form");
-    let insideButton = document.getElementsByClassName("inside-workexp-class");
-    for (let i = 0; i < insideButton.length; i++)
-        insideButton[i].style.display = "none";
-    let makeHeadingButtonInvisible =
-        document.getElementsByClassName("topic-button");
-    for (let i = 0; i < makeHeadingButtonInvisible.length; i++)
-        makeHeadingButtonInvisible[i].style.display = "block";
+    addForm(TOPIC.WORKEXP);
+    changeInsideTopicButtons(TOPIC.WORKEXP, "none");
+    changeTopicButtons("block");
 }
 
 export let reassignWorkExpForEdit = (workExpArray) => {
@@ -153,7 +163,6 @@ function getWorkexpData(workExp_element, dates) {
 export let submitWorkExp = () => {
     const topic = TOPIC.WORKEXP;
     let ID = createID(topic);
-    let leftID = "left-" + ID;
     let rightID = "right-" + ID;
     let workExpElement = {
         role: roleName.value,
@@ -174,16 +183,7 @@ export let submitWorkExp = () => {
     localStorage.setItem("workExpList", JSON.stringify(workExpList));
     console.log(workExpList);
     reinitializeWorkexp();
-    document
-        .getElementsByClassName(TOPIC.WORKEXP + "-form")[0]
-        .classList.add("sub-form");
-    let insideButton = document.getElementsByClassName(
-        "inside-workexp-class"
-    );
-    for (let i = 0; i < insideButton.length; i++)
-        insideButton[i].style.display = "none";
-    let makeHeadingButtonInvisible =
-        document.getElementsByClassName("topic-button");
-    for (let i = 0; i < makeHeadingButtonInvisible.length; i++)
-        makeHeadingButtonInvisible[i].style.display = "block";
+    addForm(topic);
+    changeInsideTopicButtons(topic, "none");
+    changeTopicButtons("block");
 };

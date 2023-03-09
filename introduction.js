@@ -1,4 +1,4 @@
-import { TOPIC } from "./index.js";
+import { addForm, TOPIC } from "./index.js";
 let introList = [];
 
 
@@ -6,6 +6,15 @@ let name = document.getElementById("name");
 let role = document.getElementById("role");
 let description = document.getElementById("desc");
 export let buttonIntro = document.getElementById("submit-introduction");
+export let editIntroductionButton = document.getElementById(
+    "edit-introduction-button"
+);
+
+export function editIntroductionInfo()
+{
+    changeForm("intro");
+    reassignIntroductionForEdit();
+}
 
 function reinitializeIntro() {
     name.value = "";
@@ -18,6 +27,7 @@ export let reassignIntroductionForEdit = () => {
     description.value = (document.querySelector(".intro p")).innerHTML;
 };
 export let submitIntro = () => {
+    let topic=TOPIC.INTRODUCTION
     let introElement = {
         name: name.value,
         role: role.value,
@@ -31,7 +41,5 @@ export let submitIntro = () => {
     userRole.innerHTML = role.value;
     userDescription.innerHTML = description.value;
     reinitializeIntro();
-    document
-        .getElementsByClassName(TOPIC.INTRODUCTION + "-form")[0]
-        .classList.add("sub-form");
+    addForm(topic);
 };

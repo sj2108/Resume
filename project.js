@@ -1,4 +1,16 @@
-import { createNewElementRight, setDate, TOPIC, createID,addDescription } from "./index.js";
+import {
+    createNewElementRight,
+    setDate,
+    TOPIC,
+    createID,
+    addDescription,
+    addForm,
+    changeInsideTopicButtons,
+    changeTopicButtons,
+    data,
+    changeForm,
+    changeButtons,
+} from "./index.js";
 
 export let projectList = [];
 export let addProjectDescButton = document.getElementById("add-project-desc");
@@ -15,11 +27,47 @@ export let editInsideProjectButton = document.getElementById(
     "project-information"
 );
 
+
+export function editProjectInfo() {
+    changeTopicButtons("none");
+    changeInsideTopicButtons(TOPIC.PROJECT, "block");
+}
+export function addProjectInfo() {
+    changeTopicButtons("none");
+    changeForm(TOPIC.PROJECT);
+}
+export function editInsideProjectInfo(e) {
+    let parentDiv = e.target.parentNode.parentNode.parentNode.parentNode;
+    let ID = e.target.parentNode.getAttribute("id");
+    let rightID = parentDiv.getAttribute("id");
+    let elementID = rightID.split("-")[1] + "-" + rightID.split("-")[2];
+    if (ID === "edit-inside-project-button") {
+        console.log(ID);
+        console.log(parentDiv);
+
+        changeForm("project");
+        changeButtons(false, TOPIC.PROJECT);
+        console.log(elementID);
+        for (let i = 0; i < projectList.length; i++) {
+            if (projectList[i].id === elementID) {
+                data.projectIndex = i;
+                console.log("Hello");
+                reassignProjectForEdit(projectList[i]);
+                break;
+            }
+        }
+        data.parent_Div = parentDiv;
+    } else {
+        parentDiv.remove();
+        deleteProject(elementID);
+    }
+}
+
 export function assignProjectValue(completeProjectData) {
     if (completeProjectData) {
         projectList = completeProjectData;
         for (const element in completeProjectData) {
-            console.log(completeProjectData.dateFrom);
+            // console.log(completeProjectData.dateFrom);
             let dates = setDate(
                 completeProjectData[element].dateFrom,
                 completeProjectData[element].dateTo
@@ -29,24 +77,18 @@ export function assignProjectValue(completeProjectData) {
                 dates
             );
             let rightID = "right-" + completeProjectData[element].id;
-            let leftID = "left-" + completeProjectData[element].id;
+            // let leftID = "left-" + completeProjectData[element].id;
             createNewElementRight(
                 TOPIC.PROJECT,
                 rightID,
                 insideHTML,
                 completeProjectData[element]
             );
-            // 'index.createNewElementLeft(
-            //     index.TOPIC.PROJECT,
-            //     leftID,
-            //     completeProjectData[element].name
-            // );'
         }
     }
 }
 
 export function deleteProject(elementArrayId) {
-    // projectList = index.completeProjectData;
     projectList = projectList.filter((l) => l.id != elementArrayId);
     localStorage.setItem("projectList", JSON.stringify(projectList));
     let insideButton = document.getElementsByClassName("inside-project-class");
@@ -61,36 +103,15 @@ export function deleteProject(elementArrayId) {
 export function confirmProject(parent_Div, projectIndex) {
     projectList.splice(projectIndex, 1);
     localStorage.setItem("projectList", JSON.stringify(projectList));
-    // let elementId = parent_Div.getAttribute("id");
     parent_Div.remove();
-    // let elementIdRight = index.getElementIDRight(elementId);
-    // let elementRemove = document.getElementById(elementIdRight);
-    // elementRemove.remove();
     submitProject();
-    document
-        .getElementsByClassName(TOPIC.PROJECT + "-form")[0]
-        .classList.add("sub-form");
-    let insideButton = document.getElementsByClassName("inside-project-class");
-    for (let i = 0; i < insideButton.length; i++)
-        insideButton[i].style.display = "none";
-    let makeHeadingButtonInvisible =
-        document.getElementsByClassName("topic-button");
-    for (let i = 0; i < makeHeadingButtonInvisible.length; i++)
-        makeHeadingButtonInvisible[i].style.display = "block";
-    // index.addEducationButton.style.display = "block";
-    // index.editEducationButton.style.display = "block";
-    // index.changeForm("None");
-    // index.changeButtons(true, index.TOPIC.PROJECT);
 }
+
 export function cancelProject() {
-    changeButtons(true, TOPIC.PROJECT);
-    let insideButton = document.getElementsByClassName("inside-project-class");
-    for (let i = 0; i < insideButton.length; i++)
-        insideButton[i].style.display = "none";
-    let makeHeadingButtonInvisible =
-        document.getElementsByClassName("topic-button");
-    for (let i = 0; i < makeHeadingButtonInvisible.length; i++)
-        makeHeadingButtonInvisible[i].style.display = "block";
+    // changeButtons(true, TOPIC.PROJECT);
+    addForm(TOPIC.PROJECT);
+    changeInsideTopicButtons(TOPIC.PROJECT,"none");
+    changeTopicButtons("block")
     reinitializeProject();
 }
 export function reinitializeProject() {
@@ -98,10 +119,9 @@ export function reinitializeProject() {
     dateFromProject.value = "";
     dateToProject.value = "";
     descrProject[0].value = "";
-    // console.log("hello");
-    for (let i = 1; i < descrProject.length; ) {
-        // console.log(descrProject[i].className);
-
+   
+    for (let i = 1; i < descrProject.length; )
+    {
         descrProject[i].remove();
     }
 }
@@ -171,22 +191,11 @@ export let submitProject = () => {
     }
     let insideHTML = getProjectData(projectElement, dates);
     createNewElementRight(topic, rightID, insideHTML, projectElement);
-    // index.createNewElementLeft(topic, leftID, projectElement.name);
-    // projectList = index.completeProjectData;
-    // console.log(projectElement);
-    // console.log(projectList);
     projectList.push(projectElement);
     localStorage.setItem("projectList", JSON.stringify(projectList));
     console.log(projectList);
     reinitializeProject();
-    document
-        .getElementsByClassName(TOPIC.PROJECT + "-form")[0]
-        .classList.add("sub-form");
-    let insideButton = document.getElementsByClassName("inside-project-class");
-    for (let i = 0; i < insideButton.length; i++)
-        insideButton[i].style.display = "none";
-    let makeHeadingButtonInvisible =
-        document.getElementsByClassName("topic-button");
-    for (let i = 0; i < makeHeadingButtonInvisible.length; i++)
-        makeHeadingButtonInvisible[i].style.display = "block";
+    addForm(topic);
+    changeInsideTopicButtons(topic, "none");
+    changeTopicButtons("block");
 };

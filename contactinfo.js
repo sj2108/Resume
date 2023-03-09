@@ -1,4 +1,4 @@
-import * as index from "./index.js";
+import {addForm,changeForm}  from "./index.js";
 
 export let contactList = [];
 let linkedinLink = document.getElementById("linkedin");
@@ -7,6 +7,15 @@ let phoneLink = document.getElementById("phone");
 let placeLink = document.getElementById("place");
 let twitterLink = document.getElementById("twitter");
 export let buttonLink = document.getElementById("submit-contact-info");
+export let editContactInfoButton = document.getElementById(
+    "edit-contactinfo-button"
+);
+
+export function editContactInfo()
+{
+    changeForm("contact-info");
+}
+   
 
 export function assignContactValue(completeContactData)
 {
@@ -105,6 +114,7 @@ export let submitContactInfo = () => {
     let userPhone = phoneLink.value;
     let userPlace = placeLink.value;
     let userTwitter = twitterLink.value;
+    let topic="contact-info"
     let contactElement = {
         linkedin: userLinkedin,
         email: userEmail,
@@ -123,4 +133,6 @@ export let submitContactInfo = () => {
     addPlace(parentDiv, userPlace);
     addTwitter(parentDiv, userTwitter);
     reinitializeContactInfo();
+    addForm(topic);
+    
 };

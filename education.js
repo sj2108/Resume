@@ -1,4 +1,4 @@
-import {createNewElementRight,setDate,TOPIC,createID} from "./index.js";
+import {createNewElementRight,setDate,TOPIC,createID, addForm,changeTopicButtons, changeForm,changeInsideTopicButtons,data,changeButtons} from "./index.js";
 
 export let educationList=[];
 let degreeName = document.getElementById("degree-name");
@@ -18,6 +18,40 @@ export let editInsideEducationButton = document.getElementById(
     "education-information"
 );
 
+export function editEducationInfo() {
+    changeTopicButtons("none");
+    changeInsideTopicButtons(TOPIC.EDUCATION, "block");
+}
+export function addEducationInfo() {
+    changeTopicButtons("none");
+    changeForm(TOPIC.EDUCATION);
+}
+export function editInsideEducationInfo(e) {
+    let parentDiv = e.target.parentNode.parentNode.parentNode.parentNode;
+    let ID = e.target.parentNode.getAttribute("id");
+    let rightID = parentDiv.getAttribute("id");
+    let elementID = rightID.split("-")[1] + "-" + rightID.split("-")[2];
+    if (ID === "edit-inside-education-button") {
+        changeForm("education");
+        changeButtons(false, TOPIC.EDUCATION);
+        console.log(elementID);
+        for (let i = 0; i < educationList.length; i++) {
+            if (educationList[i].id === elementID) {
+                data.eduIndex = i;
+                console.log("Hello");
+                reassignEducationForEdit(educationList[i]);
+                break;
+            }
+        }
+        data.parent_Div = parentDiv;
+    } else {
+        parentDiv.remove();
+        deleteEducation(elementID);
+    }
+}
+
+
+    
 
 export function assignEducationValue(completeEducationData){
     if(completeEducationData){
@@ -49,50 +83,20 @@ export function confirmEducation(parent_Div, eduIndex)
     localStorage.setItem("educationList", JSON.stringify(educationList));
     parent_Div.remove();
     submitEducation();
-    document
-        .getElementsByClassName(TOPIC.EDUCATION + "-form")[0]
-        .classList.add("sub-form");
-    let insideButton = document.getElementsByClassName(
-        "inside-education-class"
-    );
-    for (let i = 0; i < insideButton.length; i++)
-        insideButton[i].style.display = "none";
-    let makeHeadingButtonInvisible =
-        document.getElementsByClassName("topic-button");
-    for (let i = 0; i < makeHeadingButtonInvisible.length; i++)
-        makeHeadingButtonInvisible[i].style.display = "block";
 }
 export function cancelEducation()
 {
-    
     reinitializeEducation();
-    let insideButton = document.getElementsByClassName(
-        "inside-education-class"
-    );
-    for (let i = 0; i < insideButton.length; i++)
-        insideButton[i].style.display = "none";
-    let makeHeadingButtonInvisible =
-        document.getElementsByClassName("topic-button");
-    for (let i = 0; i < makeHeadingButtonInvisible.length; i++)
-        makeHeadingButtonInvisible[i].style.display = "block";
-    // index.changeButtons(true, index.TOPIC.EDUCATION);
-    document
-        .getElementsByClassName(TOPIC.EDUCATION + "-form")[0]
-        .classList.add("sub-form");
-   
+    addForm(TOPIC.EDUCATION);
+    changeInsideTopicButtons(TOPIC.EDUCATION, "none");
+    changeTopicButtons("block");
 }
 export function deleteEducation(elementArrayId){
 // educationList=index.completeEducationData;
 educationList = educationList.filter((l) => l.id != elementArrayId);
 localStorage.setItem("educationList", JSON.stringify(educationList));
-let insideButton = document.getElementsByClassName("inside-education-class");
-for (let i = 0; i < insideButton.length; i++)
-    insideButton[i].style.display = "none";
-let makeHeadingButtonInvisible =
-    document.getElementsByClassName("topic-button");
-for (let i = 0; i < makeHeadingButtonInvisible.length; i++)
-    makeHeadingButtonInvisible[i].style.display = "block";
-
+changeInsideTopicButtons(TOPIC.EDUCATION, "none");
+changeTopicButtons("block");
 console.log(educationList);
 }
 
@@ -155,16 +159,8 @@ export let submitEducation = () => {
     localStorage.setItem("educationList", JSON.stringify(educationList));
     console.log(educationList);
     reinitializeEducation();
-    document
-        .getElementsByClassName(TOPIC.EDUCATION + "-form")[0]
-        .classList.add("sub-form");
-    let insideButton = document.getElementsByClassName(
-        "inside-education-class"
-    );
-    for (let i = 0; i < insideButton.length; i++)
-        insideButton[i].style.display = "none";
-    let makeHeadingButtonInvisible =
-        document.getElementsByClassName("topic-button");
-    for (let i = 0; i < makeHeadingButtonInvisible.length; i++)
-        makeHeadingButtonInvisible[i].style.display = "block";
+    addForm(topic);
+    changeInsideTopicButtons(topic,"none");
+    changeTopicButtons("block");
+    
 };
