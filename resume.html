@@ -1,28 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
+    <head>
+        <meta charset="UTF-8" />
 
-    <title>RESUME</title>
-    <link rel="icon" type="image/x-icon" href="/images/resume-image.jpg" />
+        <title>RESUME</title>
+        <link rel="icon" type="image/x-icon" href="/images/resume-image.jpg" />
 
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
-    />
-    <link href="styles.css" rel="stylesheet" />
-  </head>
-  <body>
-    <div class="full-page">
-      <div class="form">
-        <form action="">
-          <!-- <label for="topic">Choose a topic to add</label> -->
-          <br />
-          <select name="topic" id="topic">
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+        />
+        <link href="styles.css" rel="stylesheet" />
+    </head>
+    <body>
+        <div class="full-page">
+            <div class="form">
+                <form action="">
+                    <br />
+                    <!-- <select name="topic" id="topic">
             <option value="None">Select</option>
             <option value="intro">Introduction</option>
             <option value="workexp">Work-Experience</option>
@@ -32,9 +31,9 @@
             <option value="project">Project</option>
             <option value="education">Education</option>
             <option value="image">Image</option>
-          </select>
+          </select> -->
 
-          <div class="intro-form sub-form">
+                    <!-- <div class="intro-form sub-form">
             <br />
             <div>
               <label for="name">Name</label>
@@ -57,7 +56,6 @@
               <br>
             </div>
             <br />
-            <!-- <input type="button" value="submit" id="submit-intro" /> -->
             <input type="button" value="submit" id="submit-introduction" class="submit-button" />
             <input type="button" value="confirm" id="confirm-introduction" class="confirm-button" onclick="" />
             <br />
@@ -65,7 +63,6 @@
           </div>
           <div class="image-form sub-form">
             <input type="file" id="profile-image" name="filename">
-            <!-- <input type="submit"> -->
             <br />
             <input type="button" value="submit" id="submit-image" />
           </div>
@@ -160,11 +157,10 @@
               ></textarea>
             </div>
             <br />
-            <!-- <button id='add-desc'>+</button> -->
-            <input type="button" value="Add" id="add-project-desc" />
+            
+            <input type="button" value="Add description" id="add-project-desc" />
             <br>
             <br>
-            <!-- <input type="button" value="submit" id="submit-education" /> -->
             <input type="button" value="submit" id="submit-project" class="submit-button" />
             <input type="button" value="confirm" id="confirm-project" class="confirm-button" onclick="" />
             <br />
@@ -248,159 +244,265 @@
               ></textarea>
             </div>
             <br />
-            <!-- <button id='add-desc'>+</button> -->
-            <input type="button" value="+" id="add-desc" />
+           
+            <input type="button" value="Add description" id="add-desc" />
             <br>
             <input type="button" value="submit" id="submit-workexp" />
             <input type="button" value="confirm" id="confirm-workexp" />
             <br />
             <input type="button" value="cancel" id="cancel-workexp" />
-          </div>
-          <br />
-        </form>
-        <!-- <div></div> -->
-      </div>
+          </div> -->
+                    <br />
+                </form>
+            </div>
 
-      <div class="layout">
-        <div class="left">
-          <div class="profile-image">
-            <div id="change-image">
-              <!-- <h1>SHREYANSH JAIN</h1> -->
-            <img src="images/resume-image.jpg" />
-            <div class="edit-icons">
-              <!-- <button class="topic-button" id="add-introduction-button"><i class="fa-solid fa-plus edit-image"></i></button> -->
-              
-              <button class="topic-button" id="edit-image-button"><i class="fa-solid fa-pen-to-square edit-image"></i></button>
+            <div class="layout">
+                <div class="left">
+                    <div class="profile-image">
+                        <div id="change-image">
+                            <!-- <h1>SHREYANSH JAIN</h1> -->
+                            <img src="images/resume-image.jpg" />
+                            <div class="edit-icons">
+                                <!-- <button class="topic-button" id="add-introduction-button"><i class="fa-solid fa-plus edit-image"></i></button> -->
+
+                                <button
+                                    class="topic-button"
+                                    id="edit-image-button"
+                                    onclick="addDataInsideSection(event)"
+                                >
+                                    <i
+                                        class="fa-solid fa-pen-to-square edit-image"
+                                    ></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="introduction">
+                        <h1 id="nameHeading">SHREYANSH JAIN</h1>
+                        <h4>Software Engineer Role</h4>
+                        <hr />
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur, adipisicing
+                            elit. Unde atque consequatur fuga quaerat iste
+                            sapiente laudantium, impedit commodi. Incidunt,
+                            dolore fuga totam ad doloribus perspiciatis atque
+                            cupiditate voluptatibus amet voluptatum.Lorem ipsum
+                            dolor sit amet consectetur, adipisicing elit. Unde
+                            atque consequatur fuga quaerat iste sapiente
+                            laudantium, impedit commodi. Incidunt, dolore fuga
+                            totam ad doloribus perspiciatis atque cupiditate
+                            voluptatibus amet voluptatum.
+                        </p>
+                    </div>
+                    <div class="links">
+                        <div id="change-contactinfo">
+                            <h2>WEBLINKS</h2>
+                            <div class="edit-icons">
+                                <!-- <button class="topic-button" id="add-skills-button"><i class="fa-solid fa-plus edit-image"></i></button> -->
+
+                                <button
+                                    class="topic-button"
+                                    id="edit-weblinks-button"
+                                    onclick="addDataInsideSection(event)"
+                                >
+                                    <i
+                                        class="fa-solid fa-pen-to-square edit-image"
+                                    ></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="link-icon"></div>
+                        <div class="link-icon"></div>
+                        <div class="link-icon"></div>
+                        <div class="link-icon"></div>
+                        <div class="link-icon"></div>
+                    </div>
+                    <div id="skills-info" >
+                        <div id="change-skills">
+                            <h2>SKILLS</h2>
+                            <div class="edit-icons">
+                                <button
+                                    onclick="addDataInsideSection(event)"
+                                    class="topic-button"
+                                    id="add-skills-button"
+                                >
+                                    <i class="fa-solid fa-plus edit-image"></i>
+                                </button>
+
+                                <button
+                                    onclick="editDataSection(event)"
+                                    class="topic-button"
+                                    id="edit-skills-button"
+                                >
+                                    <i
+                                        class="fa-solid fa-pen-to-square edit-image"
+                                    ></i>
+                                </button>
+                            </div>
+                          </div>
+                        <div  onclick="editInsideSection(event)" id="skills-information" class="skills-container" ></div>
+                        
+                    </div>
+                    <div id="languages-info">
+                        <div id="change-languages">
+                            <h2>LANGUAGES</h2>
+                            <div class="edit-icons">
+                                <button
+                                    onclick="addDataInsideSection(event)"
+                                    class="topic-button"
+                                    id="add-languages-button"
+                                >
+                                    <i class="fa-solid fa-plus edit-image"></i>
+                                </button>
+
+                                <button
+                                    onclick="editDataSection(event)"
+                                    class="topic-button"
+                                    id="edit-languages-button"
+                                >
+                                    <i
+                                        class="fa-solid fa-pen-to-square edit-image"
+                                    ></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div onclick="editInsideSection(event)" class="languages-container" id="languages-information"></div>
+                    </div>
+                </div>
+                <div class="right">
+                    <div class="intro">
+                        <div id="change-introduction">
+                            <h1>SHREYANSH JAIN</h1>
+                            <div class="edit-icons">
+                                <!-- <button class="topic-button" id="add-introduction-button"><i class="fa-solid fa-plus edit-image"></i></button> -->
+
+                                <button
+                                    class="topic-button"
+                                    id="edit-intro-button"
+                                    onclick="addDataInsideSection(event)"
+                                >
+                                    <i
+                                        class="fa-solid fa-pen-to-square edit-image"
+                                    ></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <h4>Software Engineer Role</h4>
+                        <hr />
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur, adipisicing
+                            elit. Unde atque consequatur fuga quaerat iste
+                            sapiente laudantium, impedit commodi. Incidunt,
+                            dolore fuga totam ad doloribus perspiciatis atque
+                            cupiditate voluptatibus amet voluptatum.Lorem ipsum
+                            dolor sit amet consectetur, adipisicing elit. Unde
+                            atque consequatur fuga quaerat iste sapiente
+                            laudantium, impedit commodi. Incidunt, dolore fuga
+                            totam ad doloribus perspiciatis atque cupiditate
+                            voluptatibus amet voluptatum.
+                        </p>
+                    </div>
+                    <div class="content-container">
+                        <div id="change-workexp">
+                            <h2>WORK EXPERIENCE</h2>
+                            <div class="edit-icons">
+                                <button
+                                    class="topic-button"
+                                    id="add-workexp-button"
+                                    onclick="addDataInsideSection(event)"
+                                >
+                                    <i class="fa-solid fa-plus edit-image"></i>
+                                </button>
+
+                                <button
+                                    class="topic-button"
+                                    id="edit-workexp-button"
+                                    onclick="editDataSection(event)"
+                                >
+                                    <i
+                                        class="fa-solid fa-pen-to-square edit-image"
+                                    ></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div
+                            onclick="editInsideSection(event)"
+                            class="workexp-container"
+                            id="workexp-information"
+                        ></div>
+                    </div>
+                    <div class="content-container">
+                        <div id="change-project">
+                            <h2>PROJECT</h2>
+                            <div class="edit-icons">
+                                <button
+                                    class="topic-button"
+                                    id="add-project-button"
+                                    onclick="addDataInsideSection(event)"
+                                >
+                                    <i class="fa-solid fa-plus edit-image"></i>
+                                </button>
+
+                                <button
+                                    onclick="editDataSection(event)"
+                                    class="topic-button"
+                                    id="edit-project-button"
+                                    
+                                >
+                                    <i
+                                        class="fa-solid fa-pen-to-square edit-image"
+                                    ></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div
+                            onclick="editInsideSection(event)"
+                            class="project-container"
+                            id="project-information"
+                        ></div>
+                    </div>
+                    <div class="education">
+                        <div id="change-education">
+                            <h2>EDUCATION</h2>
+                            <div class="edit-icons">
+                                <button
+                                    onclick="addDataInsideSection(event)"
+                                    class="topic-button"
+                                    id="add-education-button"
+                                >
+                                    <i class="fa-solid fa-plus edit-image"></i>
+                                </button>
+                                <button
+                                    onclick="editDataSection(event)"
+                                    class="topic-button"
+                                    id="edit-education-button"
+                                >
+                                    <i
+                                        class="fa-solid fa-pen-to-square edit-image"
+                                    ></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div
+                            onclick="editInsideSection(event)"
+                            class="education-container"
+                            id="education-information"
+                        ></div>
+                    </div>
+                </div>
             </div>
-            </div>
-          </div>
-          <div class="introduction">
-            <h1 id="nameHeading">SHREYANSH JAIN</h1>
-            <h4>Software Engineer Role</h4>
-            <hr />
-            <p>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde
-              atque consequatur fuga quaerat iste sapiente laudantium, impedit
-              commodi. Incidunt, dolore fuga totam ad doloribus perspiciatis
-              atque cupiditate voluptatibus amet voluptatum.Lorem ipsum dolor
-              sit amet consectetur, adipisicing elit. Unde atque consequatur
-              fuga quaerat iste sapiente laudantium, impedit commodi. Incidunt,
-              dolore fuga totam ad doloribus perspiciatis atque cupiditate
-              voluptatibus amet voluptatum.
-            </p>
-          </div>
-          <div class="links">
-            <div id="change-contactinfo">
-              <h2>WEBLINKS</h2>
-              <div class="edit-icons">
-              <!-- <button class="topic-button" id="add-skills-button"><i class="fa-solid fa-plus edit-image"></i></button> -->
-              
-              <button class="topic-button" id="edit-contactinfo-button"><i class="fa-solid fa-pen-to-square edit-image"></i></button>
-              </div>
-            </div>
-            <div class="link-icon">
-            </div>
-            <div class="link-icon">
-            </div>
-            <div class="link-icon">
-            </div>
-            <div class="link-icon">
-            </div>
-            <div class="link-icon">
-            </div>
-          </div>
-          <div id="skills-information" class="skills-container">
-            <div id="change-skills">
-              <h2>SKILLS</h2>
-              <div class="edit-icons">
-              <button class="topic-button" id="add-skills-button"><i class="fa-solid fa-plus edit-image"></i></button>
-              
-              <button class="topic-button" id="edit-skills-button"><i class="fa-solid fa-pen-to-square edit-image"></i></button>
-              </div>
-            </div>
-            
-          </div>
-          <div class="languages-container" id="languages-information">
-            <div id="change-languages">
-              <h2>LANGUAGES</h2>
-              <div class="edit-icons">
-              <button class="topic-button" id="add-languages-button"><i class="fa-solid fa-plus edit-image"></i></button>
-              
-              <button class="topic-button" id="edit-languages-button"><i class="fa-solid fa-pen-to-square edit-image"></i></button>
-              </div>
-            </div>
-            
-          </div>
         </div>
-        <div class="right">
-          <div class="intro">
-            <div id="change-introduction">
-              <h1>SHREYANSH JAIN</h1>
-              <div class="edit-icons">
-              <!-- <button class="topic-button" id="add-introduction-button"><i class="fa-solid fa-plus edit-image"></i></button> -->
-              
-              <button class="topic-button" id="edit-introduction-button"><i class="fa-solid fa-pen-to-square edit-image"></i></button>
-              </div>
-            </div>
-            
-            <h4>Software Engineer Role</h4>
-            <hr />
-            <p>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde
-              atque consequatur fuga quaerat iste sapiente laudantium, impedit
-              commodi. Incidunt, dolore fuga totam ad doloribus perspiciatis
-              atque cupiditate voluptatibus amet voluptatum.Lorem ipsum dolor
-              sit amet consectetur, adipisicing elit. Unde atque consequatur
-              fuga quaerat iste sapiente laudantium, impedit commodi. Incidunt,
-              dolore fuga totam ad doloribus perspiciatis atque cupiditate
-              voluptatibus amet voluptatum.
-            </p>
-          </div>
-          <div class="content-container">
-            <div id="change-workexp">
-              <h2>WORK EXPERIENCE</h2>
-              <div class="edit-icons">
-              <button class="topic-button" id="add-workexp-button"><i class="fa-solid fa-plus edit-image"></i></button>
-              
-              <button class="topic-button" id="edit-workexp-button"><i class="fa-solid fa-pen-to-square edit-image"></i></button>
-              </div>
-            </div>
-            <div class="workexp-container" id="workexp-information"></div>
-            
-          </div>
-          <div class="content-container">
-            <div id="change-project">
-              <h2>PROJECT</h2>
-              <div class="edit-icons">
-              <button class="topic-button" id="add-project-button"><i class="fa-solid fa-plus edit-image"></i></button>
-              
-              <button class="topic-button" id="edit-project-button"><i class="fa-solid fa-pen-to-square edit-image"></i></button>
-              </div>
-            </div>
-            <div class="project-container" id="project-information"></div>
-           
-          </div>
-          <div class="education">
-            <div id="change-education">
-              <h2>EDUCATION</h2>
-              <div class="edit-icons">
-              <button class="topic-button" id="add-education-button"><i class="fa-solid fa-plus edit-image"></i></button>
-              <button class="topic-button" id="edit-education-button"><i class="fa-solid fa-pen-to-square edit-image"></i></button>
-              </div>
-            </div>
-            
-            <div class="education-container" id="education-information"></div>
-            
-          </div>
+        <div>
+            <input
+                type="button"
+                value="Edit Resume"
+                id="preview-resume"
+                class="preview"
+            />
         </div>
-      </div>
-      
-    </div>
-    <div >
-        <input type="button" value="Edit" id="preview-resume" class="preview"/>
-    </div>
-   
-   
-    <script type="module" src="index.js"></script>
-  </body>
+
+        <script type="module" src="mvc.js"></script>
+    </body>
 </html>

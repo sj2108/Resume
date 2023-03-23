@@ -1,0 +1,43 @@
+// intro: {
+//     name: document.getElementById("name"),
+//     role: document.getElementById("role"),
+//     description: document.getElementById("desc"),
+// },
+// weblinks: {
+//     linkedin: document.getElementById("linkedin"),
+//     mailLink: document.getElementById("mail"),
+//     phoneLink: document.getElementById("phone"),
+//     placeLink: document.getElementById("place"),
+//     twitterLink: document.getElementById("twitter"),
+//     // buttonLink: document.getElementById("submit-contact-info"),
+// },
+// skills: {
+//     skill: document.getElementById("skill-name"),
+//     percentage: document.getElementById("skill-percentage"),
+// },
+// languages: {
+//     name: document.getElementById("languages-name"),
+//     rating: document.getElementById("languages-rating"),
+// },
+// workexp: {
+//     name: document.getElementById("role-name"),
+//     company: document.getElementById("company-name"),
+//     location: document.getElementById("work-location"),
+//     dateFrom: document.getElementById("date-from"),
+//     dateTo: document.getElementById("date-to"),
+//     descr: document.getElementsByClassName("workexp-desc"),
+// },
+// project: {
+//     projectName: document.getElementById("project-name"),
+//     dateFrom: document.getElementById("date-from-project"),
+//     dateTo: document.getElementById("date-to-project"),
+//     descrProject: document.getElementsByClassName("project-desc"),
+// },
+// education: {
+//     degree: document.getElementById("degree-name"),
+//     specialization: document.getElementById("specialization"),
+//     college: document.getElementById("college-name"),
+//     dateFrom: document.getElementById("date-from-edu"),
+//     dateTo: document.getElementById("date-to-edu"),
+//     cgpa: document.getElementById("cgpa"),
+// },

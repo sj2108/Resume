@@ -39,7 +39,7 @@ label{
     font-size: 1.5rem;
     margin: 0px 5px 0px 5px;
 }
-#edit-introduction-button
+#edit-intro-button
 {
     background-color: white;
 }
@@ -57,9 +57,9 @@ label{
     font-size: 2rem;
     border: 1px solid black;
 }
-.sub-form {
+/* .sub-form {
     display: none;
-}
+} */
 .layout {
     /* font-size: 2rem !important; */
     width: 60%;
@@ -69,7 +69,10 @@ label{
     border: 1px solid black;
     padding-bottom: 20px;
 }
-
+form h1
+{
+    background-color: black;
+}
 textarea {
     resize: none;
 }

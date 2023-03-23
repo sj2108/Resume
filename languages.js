@@ -20,6 +20,24 @@ export let editInsideLanguagesButton = document.getElementById(
     "languages-information"
 );
 
+export function addInsideLanguages(newDiv, parentDiv, elementData, rightID)
+{
+    newDiv.id = rightID;
+    newDiv.className = "inside-" + topicName + "-container";
+    console.log(newDiv.childNodes[1]);
+    for (let i = 0; i < elementData.rating; i++) {
+        let tempDiv = document.createElement("div");
+        tempDiv.innerHTML = "<i class='fa-solid fa-circle rating'></i>";
+        newDiv.childNodes[1].appendChild(tempDiv);
+    }
+    for (let i = 0; i < 5 - elementData.rating; i++) {
+        let tempDiv = document.createElement("div");
+        tempDiv.innerHTML = "<i class='fa-regular fa-circle unrate'></i>";
+        newDiv.childNodes[1].appendChild(tempDiv);
+    }
+    parentDiv[0].appendChild(newDiv);
+}
+
 export function editLanguagesInfo()
 {
     changeTopicButtons("none");
